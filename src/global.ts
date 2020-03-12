@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from "styled-components";
-import "typeface-orbitron";
-import "typeface-titillium-web";
+import { extractCSSProps } from "./extractCSSVars";
+import { theme } from "./theme";
 
 export const GlobalStyles = createGlobalStyle(
   () => css`
@@ -173,5 +173,11 @@ export const GlobalStyles = createGlobalStyle(
       background-image: none !important;
       color: inherit !important;
     }
+
+    @page {
+      margin: 0;
+    }
+
+    ${extractCSSProps(theme)};
   `
 );

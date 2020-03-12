@@ -1,11 +1,14 @@
 import React from "react";
 import { render } from "react-dom";
+import { ThemeProvider } from 'styled-components'
 import {
   FaEnvelope as Email,
   FaLinkedin as LinkedIn,
   FaTwitter as Twitter,
   FaGithub as GitHub
 } from "react-icons/fa";
+import { theme } from "./theme"
+import { extractCSSVars } from "./extractCSSVars";
 import { register, unregister } from "./serviceWorker";
 import { GlobalStyles } from "./global";
 import { Logo } from "./Logo";
@@ -50,7 +53,7 @@ import {
 } from "./elements";
 
 const App = () => (
-  <>
+  <ThemeProvider theme={extractCSSVars(theme)}>
     <GlobalStyles />
     <Main>
       <Navigation>
@@ -61,13 +64,13 @@ const App = () => (
             <Email /> drake@saeris.io
           </Service>
           <Service label="LinkedIn" to="https://www.linkedin.com/in/Saeris">
-            <LinkedIn /> https://www.linkedin.com/in/Saeris
+            <LinkedIn /> linkedin.com/in/Saeris
           </Service>
           <Service label="Twitter" to="https://www.twitter.com/Saeris">
-            <Twitter /> https://www.twitter.com/Saeris
+            <Twitter /> twitter.com/Saeris
           </Service>
           <Service label="GitHub" to="https://www.github.com/Saeris">
-            <GitHub /> https://www.github.com/Saeris
+            <GitHub /> github.com/Saeris
           </Service>
         </Contact>
       </Navigation>
@@ -354,7 +357,7 @@ const App = () => (
         </a>
       </Footer>
     </Main>
-  </>
+  </ThemeProvider>
 );
 
 render(<App />, document.getElementById("root"));

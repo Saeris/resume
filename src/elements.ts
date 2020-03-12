@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, DefaultTheme } from "styled-components";
 import { Link } from "./Link";
 
 const list = css`
@@ -8,35 +8,34 @@ const list = css`
   list-style: none;
 `;
 
-const divider = css`
+const divider = ({ theme }: { theme: DefaultTheme }) => css`
   padding-right: 1ch;
-  border-right: 0.15rem solid #5961ac;
+  border-right: 0.15rem solid ${theme.colors.secondary};
   box-sizing: border-box;
 `;
 
-const gradient = css`
-  background: linear-gradient(
-    300deg,
-    rgb(37, 154, 214) 0%,
-    rgb(86, 103, 176) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+const gradient = ({ theme }: { theme: DefaultTheme }) => css`
+  @media screen {
+    background: linear-gradient(300deg, ${theme.colors.primary} 0%, ${theme.colors.secondary} 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `;
 
-const overview = css`
+const overview = ({ theme }: { theme: DefaultTheme }) => css`
   display: grid;
   grid-column-gap: 1ch;
+  align-items: baseline;
   width: 100%;
-	color: #2d89c9;
+  color: ${theme.colors.primary};
   font-size: 1.6rem;
   font-weight: 300;
-	line-height: 2.1rem;
+  line-height: 2.1rem;
 `;
 
 export const Main = styled.main(
-  () => css`
+  ({ theme }) => css`
     display: grid;
     grid-template-rows:
       [header-start]
@@ -52,8 +51,8 @@ export const Main = styled.main(
     padding: 0.25in 0.5in;
     margin: 0 auto;
     box-sizing: border-box;
-    font-family: "Titillium Web", sans-serif;
-    color: #95a4bb;
+    font-family: ${theme.fonts.body};
+    color: ${theme.colors.text};
   `
 );
 
@@ -68,10 +67,11 @@ export const Navigation = styled.header(
 );
 
 export const Fullname = styled.h1(
-  () => css`
+  ({ theme }) => css`
     ${gradient};
     margin: 0;
-    font-family: "Orbitron", sans-serif;
+    color: ${theme.colors.primary};
+    font-family: ${theme.fonts.title};
     font-size: 3.8rem;
     line-height: 3rem;
     text-transform: uppercase;
@@ -79,9 +79,10 @@ export const Fullname = styled.h1(
 );
 
 export const Title = styled.h2(
-  () => css`
+  ({ theme }) => css`
     ${gradient};
     margin: 0;
+    color: ${theme.colors.secondary};
     font-size: 2.6rem;
     font-weight: 200;
   `
@@ -96,28 +97,40 @@ export const Contact = styled.address(
     width: 100%;
     margin: 0.75rem 0;
     font-style: normal;
+
+    @media print {
+      grid-template-columns: repeat(2, minmax(0, max-content));
+    }
   `
 );
 
 export const Service = styled(Link)<{ label?: string }>(
-  ({ label = `` }) => css`
+  ({ theme, label = `` }) => css`
     display: inline-flex;
     align-items: center;
-    font-size: 0;
     text-decoration: none;
+    color: ${theme.colors.primary};
+    font-size: 2.1rem;
 
     svg {
-      color: #2691d0;
       font-size: 2.1rem;
+
+      @media print {
+        margin-right: 1ch;
+      }
     }
 
-    &:after {
-      content: '${label}';
-      margin-left: 1ch;
-      color: #5961ac;
-      font-size: 2.1rem;
-      text-transform: uppercase;
-      user-select: none;
+    @media screen {
+      font-size: 0;
+
+      &:after {
+        content: '${label}';
+        margin-left: 1ch;
+        color: ${theme.colors.secondary};
+        font-size: 2.1rem;
+        text-transform: uppercase;
+        user-select: none;
+      }
     }
   `
 );
@@ -134,18 +147,19 @@ export const Content = styled.article(
 export const Section = styled.section(() => css``);
 
 export const Header = styled.h3(
-  () => css`
+  ({ theme }) => css`
     ${gradient};
     margin: 0;
+    color: ${theme.colors.primary};
     font-size: 2.1rem;
     font-weight: 300;
   `
 );
 
 export const Break = styled.hr(
-  () => css`
+  ({ theme }) => css`
     margin: 0.5rem 0;
-    border: 0.1rem solid #d5dce4;
+    border: 0.1rem solid ${theme.colors.accent};
   `
 );
 
@@ -203,19 +217,19 @@ export const JobOverview = styled.div(
 );
 
 export const Role = styled.div(
-  () => css`
+  ({ theme }) => css`
     grid-area: role;
-    color: #5961ac;
+    color: ${theme.colors.secondary};
     font-size: 1.8rem;
     font-weight: 500;
   `
 );
 
 export const Type = styled.div(
-  () => css`
+  ({ theme }) => css`
     ${divider};
     grid-area: type;
-    color: #95a4bb;
+    color: ${theme.colors.text};
   `
 );
 
@@ -240,7 +254,7 @@ export const Location = styled.div(
 );
 
 export const JobMeta = styled.div(
-  () => css`
+  ({ theme }) => css`
     display: grid;
     grid-template-columns:
       [industry-start]
@@ -251,7 +265,7 @@ export const JobMeta = styled.div(
     grid-column-gap: 1ch;
     width: 100%;
     margin-bottom: 0.4rem;
-		color: #2d89c9;
+    color: ${theme.colors.primary};
     font-size: 1.4rem;
     font-weight: 300;
     line-height: 1.8rem;
@@ -259,28 +273,28 @@ export const JobMeta = styled.div(
 );
 
 export const Industry = styled.div(
-  () => css`
+  ({ theme }) => css`
     grid-area: industry;
 
     &:before {
       content: "Industry: ";
-      color: #95a4bb;
+      color: ${theme.colors.text};
       user-select: none;
     }
   `
 );
 
 export const Technologies = styled.div(
-  () => css`
+  ({ theme }) => css`
     grid-area: technologies;
-    color: #2d89c9;
+    color: ${theme.colors.primary};
     font-size: 1.4rem;
     font-weight: 300;
     line-height: 1.8rem;
 
     &:before {
       content: "Technologies: ";
-      color: #95a4bb;
+      color: ${theme.colors.text};
       user-select: none;
     }
   `
@@ -323,31 +337,35 @@ export const ProjectOverview = styled.div(
 );
 
 export const Name = styled.div(
-  () => css`
+  ({ theme }) => css`
     ${divider};
     grid-area: name;
-    color: #5961ac;
+    color: ${theme.colors.secondary};
     font-size: 1.8rem;
     font-weight: 500;
   `
 );
 
 export const Description = styled.div(
-  () => css`
+  ({ theme }) => css`
     grid-area: description;
-    color: #2d89c9;
+    color: ${theme.colors.primary};
   `
 );
 
-const linkText = css`
+const linkText = ({ theme }: { theme: DefaultTheme }) => css`
   align-self: flex-start;
-  color: #2d89c9;
+  color: ${theme.colors.primary};
   font-size: 0;
 
   &:after {
     font-size: 1.6rem;
     text-decoration: underline;
     user-select: none;
+  }
+
+  @media print {
+    display: none;
   }
 `;
 
@@ -411,11 +429,13 @@ export const Graduated = styled.div(
   `
 );
 
-export const Footer = styled.footer(() => css`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 5rem;
-	margin-top: 1rem;
-`)
+export const Footer = styled.footer(
+  () => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    margin-top: 1rem;
+  `
+);
