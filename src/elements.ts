@@ -16,7 +16,11 @@ const divider = ({ theme }: { theme: DefaultTheme }) => css`
 
 const gradient = ({ theme }: { theme: DefaultTheme }) => css`
   @media screen {
-    background: linear-gradient(300deg, ${theme.colors.primary} 0%, ${theme.colors.secondary} 100%);
+    background: linear-gradient(
+      300deg,
+      ${theme.colors.primary} 0%,
+      ${theme.colors.secondary} 100%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -29,22 +33,14 @@ const overview = ({ theme }: { theme: DefaultTheme }) => css`
   align-items: baseline;
   width: 100%;
   color: ${theme.colors.primary};
-  font-size: 1.6rem;
+  font-size: ${theme.sizes.body};
   font-weight: 300;
-  line-height: 2.1rem;
+  line-height: ${theme.sizes.header};
 `;
 
 export const Main = styled.main(
   ({ theme }) => css`
-    display: grid;
-    grid-template-rows:
-      [header-start]
-      min-content
-      [header-end content-start]
-      1fr
-      [content-end footer-start]
-      min-content
-      [footer-end];
+    position: relative;
     width: 100%;
     max-width: 8.5in;
     min-height: 100vh;
@@ -53,6 +49,7 @@ export const Main = styled.main(
     box-sizing: border-box;
     font-family: ${theme.fonts.body};
     color: ${theme.colors.text};
+    box-decoration-break: clone;
   `
 );
 
@@ -72,7 +69,7 @@ export const Fullname = styled.h1(
     margin: 0;
     color: ${theme.colors.primary};
     font-family: ${theme.fonts.title};
-    font-size: 3.8rem;
+    font-size: ${theme.sizes.title};
     line-height: 3rem;
     text-transform: uppercase;
   `
@@ -83,7 +80,7 @@ export const Title = styled.h2(
     ${gradient};
     margin: 0;
     color: ${theme.colors.secondary};
-    font-size: 2.6rem;
+    font-size: ${theme.sizes.subtitle};
     font-weight: 200;
   `
 );
@@ -97,10 +94,6 @@ export const Contact = styled.address(
     width: 100%;
     margin: 0.75rem 0;
     font-style: normal;
-
-    @media print {
-      grid-template-columns: repeat(2, minmax(0, max-content));
-    }
   `
 );
 
@@ -110,10 +103,10 @@ export const Service = styled(Link)<{ label?: string }>(
     align-items: center;
     text-decoration: none;
     color: ${theme.colors.primary};
-    font-size: 2.1rem;
+    font-size: ${theme.sizes.header};
 
     svg {
-      font-size: 2.1rem;
+      font-size: ${theme.sizes.header};
 
       @media print {
         margin-right: 1ch;
@@ -127,7 +120,7 @@ export const Service = styled(Link)<{ label?: string }>(
         content: '${label}';
         margin-left: 1ch;
         color: ${theme.colors.secondary};
-        font-size: 2.1rem;
+        font-size: ${theme.sizes.header};
         text-transform: uppercase;
         user-select: none;
       }
@@ -136,23 +129,32 @@ export const Service = styled(Link)<{ label?: string }>(
 );
 
 export const Content = styled.article(
-  () => css`
+  ({ theme }) => css`
+    position: relative;
     grid-row: content;
-    display: grid;
-    grid-row-gap: 1rem;
     width: 100%;
   `
 );
 
-export const Section = styled.section(() => css``);
+export const Section = styled.section(
+  ({ theme }) => css`
+    position: relative;
+    break-inside: avoid;
+
+    &:not(:last-child) {
+      margin-bottom: ${theme.sizes.small};
+    }
+  `
+);
 
 export const Header = styled.h3(
   ({ theme }) => css`
     ${gradient};
     margin: 0;
     color: ${theme.colors.primary};
-    font-size: 2.1rem;
+    font-size: ${theme.sizes.header};
     font-weight: 300;
+    break-before:
   `
 );
 
@@ -164,34 +166,38 @@ export const Break = styled.hr(
 );
 
 export const Text = styled.p(
-  () => css`
+  ({ theme }) => css`
     margin-bottom: 0.5em;
-    font-size: 1.6rem;
+    font-size: ${theme.sizes.body};
     text-indent: 2ch;
   `
 );
 
 export const Skills = styled.ul(
-  () => css`
+  ({ theme }) => css`
     ${list};
     display: grid;
     grid-template-columns: repeat(5, minmax(max-content, 1fr));
-    grid-column-gap: 1ch;
+    grid-column-gap: ${theme.sizes.header};
+
+    @media print {
+      grid-template-columns: repeat(8, minmax(max-content, 1fr));
+    }
   `
 );
 
 export const Skill = styled.li(
-  () => css`
-    font-size: 1.6rem;
+  ({ theme }) => css`
+    font-size: ${theme.sizes.body};
     font-variant: small-caps;
   `
 );
 
 export const Jobs = styled.ul(
-  () => css`
+  ({ theme }) => css`
     ${list};
     display: grid;
-    grid-gap: 1em;
+    grid-gap: ${theme.sizes.label};
   `
 );
 
@@ -220,7 +226,7 @@ export const Role = styled.div(
   ({ theme }) => css`
     grid-area: role;
     color: ${theme.colors.secondary};
-    font-size: 1.8rem;
+    font-size: ${theme.sizes.label};
     font-weight: 500;
   `
 );
@@ -266,9 +272,9 @@ export const JobMeta = styled.div(
     width: 100%;
     margin-bottom: 0.4rem;
     color: ${theme.colors.primary};
-    font-size: 1.4rem;
+    font-size: ${theme.sizes.small};
     font-weight: 300;
-    line-height: 1.8rem;
+    line-height: ${theme.sizes.label};
   `
 );
 
@@ -288,9 +294,9 @@ export const Technologies = styled.div(
   ({ theme }) => css`
     grid-area: technologies;
     color: ${theme.colors.primary};
-    font-size: 1.4rem;
+    font-size: ${theme.sizes.small};
     font-weight: 300;
-    line-height: 1.8rem;
+    line-height: ${theme.sizes.label};
 
     &:before {
       content: "Technologies: ";
@@ -301,9 +307,9 @@ export const Technologies = styled.div(
 );
 
 export const Highlights = styled.ul(
-  () => css`
+  ({ theme }) => css`
     padding-left: 3ch;
-    font-size: 1.6rem;
+    font-size: ${theme.sizes.body};
   `
 );
 
@@ -341,7 +347,7 @@ export const Name = styled.div(
     ${divider};
     grid-area: name;
     color: ${theme.colors.secondary};
-    font-size: 1.8rem;
+    font-size: ${theme.sizes.label};
     font-weight: 500;
   `
 );
@@ -359,7 +365,7 @@ const linkText = ({ theme }: { theme: DefaultTheme }) => css`
   font-size: 0;
 
   &:after {
-    font-size: 1.6rem;
+    font-size: ${theme.sizes.body};
     text-decoration: underline;
     user-select: none;
   }
@@ -437,5 +443,9 @@ export const Footer = styled.footer(
     width: 100%;
     height: 5rem;
     margin-top: 1rem;
+
+    @media print {
+      display: none;
+    }
   `
 );

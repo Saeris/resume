@@ -179,5 +179,16 @@ export const GlobalStyles = createGlobalStyle(
     }
 
     ${extractCSSProps(theme)};
+
+    @media print {
+      :root {
+        --sizes-title: 26pt;
+        --sizes-subtitle: 18pt;
+        --sizes-header: 11pt;
+        --sizes-label: 10pt;
+        --sizes-body: 9pt;
+        --sizes-small: 8pt;
+      }
+    }
   `
 );

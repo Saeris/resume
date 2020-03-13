@@ -28,22 +28,22 @@ export interface Theme {
     body: string;
   };
   sizes: {
-    tiny: string;
+		title: string;
+		subtitle: string;
+		header: string;
+    label: string;
     body: string;
-    form: string;
-    headline: string;
-    subtitle: string;
-    title: string;
+    small: string;
   };
   weights: {
+		extrabold: string | number;
+		bold: string | number;
+		semibold: string | number;
+		medium: string | number;
+		regular: string | number;
+		light: string | number;
+		extralight: string | number;
     thin: string | number;
-    extralight: string | number;
-    light: string | number;
-    regular: string | number;
-    medium: string | number;
-    semibold: string | number;
-    bold: string | number;
-    extrabold: string | number;
   };
   colors: {
     primary: string;
@@ -96,26 +96,26 @@ export const theme: Theme = {
 		body: `'Titillium Web', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif`,
   },
   sizes: {
-    tiny: `1.8rem`,
-    body: `2.15rem`,
-    form: `2.8rem`,
-    headline: `3.2rem`,
-    subtitle: `3.75rem`,
-    title: `4.8rem`
+		title: `3.8rem`,
+		subtitle: `2.6rem`,
+		header: `2.1rem`,
+		label: `1.8rem`,
+		body: `1.6rem`,
+		small: `1.4rem`
   },
   weights: {
-    thin: 100,
-    extralight: 200,
-    light: 300,
-    regular: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
-    extrabold: 800
+		extrabold: 800,
+		bold: 700,
+		semibold: 600,
+		medium: 500,
+		regular: 400,
+		light: 300,
+		extralight: 200,
+    thin: 100
   },
   colors: {
-    primary: `#2691d0`,
-    secondary: `#5961ac`,
+    primary: `#127cbb`,
+    secondary: `#4b54a0`,
 		accent: `#d5dce4`,
     text: `#33568b`,
     white: `#fff`,
