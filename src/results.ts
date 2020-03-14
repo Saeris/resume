@@ -4,9 +4,9 @@ export const results = {
 		title: `Full-Stack JavaScript Engineer`,
 		contacts: [
 			{ label: `Email`, to: `drake@saeris.io` },
-			{ label: `LinkedIn`, to: `https://www.linkedin.com/in/Saeris` },
-			{ label: `Twitter`, to: `https://www.twitter.com/Saeris` },
-			{ label: `GitHub`, to: `https://www.github.com/Saeris` }
+			{ label: `LinkedIn`, to: `https://www.linkedin.com/in/saeris` },
+			{ label: `Twitter`, to: `https://www.twitter.com/saeris` },
+			{ label: `GitHub`, to: `https://www.github.com/saeris` }
 		],
 		summary: `Self-taught software engineer and second-career developer,
 		previously having worked as a game designer. Educational

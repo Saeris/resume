@@ -72,7 +72,7 @@ const App = () => {
           <Contact>
             {data.contacts.map(service => (
               <Service key={service.label} {...service}>
-                {Icons[service.label]} {service.to}
+                {Icons[service.label]} {service.to.replace(`https://www.`, ``)}
               </Service>
             ))}
           </Contact>
