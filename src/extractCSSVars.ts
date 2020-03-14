@@ -5,44 +5,35 @@ const createProps = (
   props: Record<string, string | number>
 ) =>
   Object.entries(props).reduce((declartions, [key, value]) => {
-    return css`
-		${declartions}
-		--${namespace}-${key}: ${value};
-	`;
+    return css`${declartions}--${namespace}-${key}: ${value};`;
   }, css``);
 
-const createVars = <T>(namespace: string, props: T): T =>
-  Object.keys(props).reduce((declartions, key) => {
-    return {
-      ...declartions,
-      [key]: `var(--${namespace}-${key})`
-    };
-  }, ({} as T));
+const createVars = <T>(namespace: keyof DefaultTheme, props: T): T =>
+  Object.keys(props).reduce(
+    (declartions, key) => {
+      return {
+        ...declartions,
+        [key]: `var(--${namespace}-${key})`
+      };
+    },
+    {} as T
+  );
 
-export const extractCSSProps = ({
-  fonts,
-  sizes,
-  weights,
-  colors
-}: DefaultTheme) => css`
+export const extractCSSProps = (theme: DefaultTheme) => css`
   :root {
-    ${fonts ? createProps(`fonts`, fonts) : ``};
-    ${sizes ? createProps(`sizes`, sizes) : ``};
-    ${weights ? createProps(`weights`, weights) : ``};
-    ${colors ? createProps(`colors`, colors) : ``};
+    ${Object.entries(theme).map(([key, value]) => createProps(key, value))}
   }
 `;
 
-export const extractCSSVars = ({
-  fonts,
-  sizes,
-  weights,
-  colors,
-  ...theme
-}: DefaultTheme): DefaultTheme => ({
-  ...theme,
-  fonts: createVars(`fonts`, fonts),
-  sizes: createVars(`sizes`, sizes),
-  weights: createVars(`weights`, weights),
-  colors: createVars(`colors`, colors)
-});
+export const extractCSSVars = (theme: DefaultTheme) => {
+  const modified: DefaultTheme = Object.create(theme);
+
+  for (const [key, value] of Object.entries(theme)) {
+    modified[key as keyof DefaultTheme] = createVars(
+      key as keyof DefaultTheme,
+      value
+    );
+  }
+
+  return modified;
+};
