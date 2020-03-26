@@ -1,8 +1,22 @@
 {
-  "name": "resume-2020",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@saeris/resume-2020",
+  "description": "Personal Resume",
+  "version": "1.0.0",
+  "author": "Drake Costa <drake@saeris.io> (https://github.com/Saeris/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saeris/resume-2020.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "postbuild": "react-snap",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
+    "@mdx-js/runtime": "^1.5.7",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
@@ -19,15 +33,11 @@
     "@types/node": "^13.9.1",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
+    "@types/react-helmet": "^5.0.15",
     "@types/styled-components": "^5.0.1",
     "react-scripts": "3.4.0",
+    "react-snap": "^1.23.0",
     "typescript": "^3.8.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import { hydrate, render } from "react-dom";
 import { ThemeProvider } from "styled-components";
 import {
   FaEnvelope as Email,
@@ -7,10 +7,14 @@ import {
   FaTwitter as Twitter,
   FaGithub as GitHub
 } from "react-icons/fa";
+// @ts-ignore
+import MDX from "@mdx-js/runtime";
 import { theme } from "./theme";
 import { extractCSSVars } from "./extractCSSVars";
 import { register, unregister } from "./serviceWorker";
 import { GlobalStyles } from "./global";
+import { SEO } from "./SEO";
+import { Link } from "./Link";
 import { Logo } from "./Logo";
 import { results } from "./results";
 import {
@@ -65,6 +69,7 @@ const App = () => {
   return (
     <ThemeProvider theme={extractCSSVars(theme)}>
       <GlobalStyles />
+      <SEO />
       <Main>
         <Navigation>
           <Fullname>{data.fullName}</Fullname>
@@ -102,6 +107,7 @@ const App = () => {
                     role,
                     company,
                     type,
+                    print,
                     timeframe,
                     location,
                     industry,
@@ -110,7 +116,7 @@ const App = () => {
                   },
                   i
                 ) => (
-                  <Job key={i}>
+                  <Job key={i} print={print}>
                     <JobOverview>
                       <Role>{role}</Role>
                       <Type>{type}</Type>
@@ -124,7 +130,9 @@ const App = () => {
                     </JobMeta>
                     <Highlights>
                       {highlights.map((highlight, i) => (
-                        <Highlight key={i}>{highlight}</Highlight>
+                        <MDX key={i} components={{ p: Highlight, a: Link }}>
+                          {highlight}
+                        </MDX>
                       ))}
                     </Highlights>
                   </Job>
@@ -178,7 +186,12 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("root"));
+const rootElement = document.getElementById("root");
+if (rootElement && rootElement.hasChildNodes()) {
+  hydrate(<App />, rootElement);
+} else {
+  render(<App />, rootElement);
+}
 
 if (process.env.NODE_ENV === `development`) {
   unregister();

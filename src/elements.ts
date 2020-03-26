@@ -129,7 +129,7 @@ export const Service = styled(Link)<{ label?: string }>(
 );
 
 export const Content = styled.article(
-  ({ theme }) => css`
+  () => css`
     position: relative;
     grid-row: content;
     width: 100%;
@@ -143,6 +143,10 @@ export const Section = styled.section(
 
     &:not(:last-child) {
       margin-bottom: ${theme.sizes.small};
+
+      @media print {
+        margin-bottom: 0.4rem;
+      }
     }
   `
 );
@@ -154,7 +158,7 @@ export const Header = styled.h3(
     color: ${theme.colors.primary};
     font-size: ${theme.sizes.header};
     font-weight: 300;
-    break-before:
+    break-before: ;
   `
 );
 
@@ -198,10 +202,20 @@ export const Jobs = styled.ul(
     ${list};
     display: grid;
     grid-gap: ${theme.sizes.label};
+
+    @media print {
+      grid-gap: ${theme.sizes.small};
+    }
   `
 );
 
-export const Job = styled.li(() => css``);
+export const Job = styled.li<{ print: boolean }>(
+  ({ print }) => css`
+    @media print {
+      display: ${print ? `block` : `none`};
+    }
+  `
+);
 
 export const JobOverview = styled.div(
   () => css`
@@ -219,6 +233,19 @@ export const JobOverview = styled.div(
       12ch
       [location-end];
     margin-bottom: 0.4rem;
+
+    @media print {
+      grid-template-columns:
+        [role-start]
+        max-content
+        [role-end company-start]
+        minmax(max-content, 1fr)
+        [company-end type-start]
+        max-content
+        [type-end location-start]
+        12ch
+        [location-end];
+    }
   `
 );
 
@@ -228,6 +255,10 @@ export const Role = styled.div(
     color: ${theme.colors.secondary};
     font-size: ${theme.sizes.label};
     font-weight: 500;
+
+    @media print {
+      ${divider};
+    }
   `
 );
 
@@ -236,6 +267,10 @@ export const Type = styled.div(
     ${divider};
     grid-area: type;
     color: ${theme.colors.text};
+
+    @medai print {
+      justify-self: flex-end;
+    }
   `
 );
 
@@ -250,6 +285,10 @@ export const Timeframe = styled.div(
     ${divider};
     grid-area: timeframe;
     justify-self: flex-end;
+
+    @media print {
+      display: none;
+    }
   `
 );
 
@@ -316,14 +355,26 @@ export const Highlights = styled.ul(
 export const Highlight = styled.li(() => css``);
 
 export const Projects = styled.ul(
-  () => css`
+  ({ theme }) => css`
     ${list};
     display: grid;
-    grid-gap: 1em;
+    grid-gap: ${theme.sizes.label};
+
+    @media print {
+      grid-gap: ${theme.sizes.small};
+    }
   `
 );
 
-export const Project = styled.li(() => css``);
+export const Project = styled.li(
+  () => css`
+    @media print {
+      &:nth-of-type(n + 6) {
+        display: none;
+      }
+    }
+  `
+);
 
 export const ProjectOverview = styled.div(
   () => css`
@@ -339,6 +390,17 @@ export const ProjectOverview = styled.div(
       12ch
       [repository-end];
     margin-bottom: 0.4rem;
+
+    @media print {
+      grid-template-columns:
+        [name-start]
+        max-content
+        [name-end description-start]
+        minmax(max-content, 1fr)
+        [description-end website-start]
+        max-content
+        [website-end];
+    }
   `
 );
 
@@ -369,25 +431,24 @@ const linkText = ({ theme }: { theme: DefaultTheme }) => css`
     text-decoration: underline;
     user-select: none;
   }
-
-  @media print {
-    display: none;
-  }
 `;
 
 export const Website = styled(Link).attrs(({ to = `` }) => ({
   children: `- Website: ${to}`
 }))(
-  () => css`
+  ({ to = `` }) => css`
     ${linkText};
     grid-area: website;
     justify-self: flex-end;
     direction: rtl;
 
     &:after {
-      ${divider};
-      content: "Website";
-      right: 0;
+      content: "${to.replace(`https://`, ``)}";
+      @media screen {
+        content: "Website";
+        ${divider};
+        right: 0;
+      }
     }
   `
 );
@@ -401,6 +462,10 @@ export const Repository = styled(Link).attrs(({ to = `` }) => ({
 
     &:after {
       content: "Repository";
+    }
+
+    @media print {
+      display: none;
     }
   `
 );
