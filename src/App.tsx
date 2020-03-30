@@ -22,13 +22,17 @@ import {
   Contact,
   Service,
   Content,
-  Section,
+  Summary,
+  Expertise,
+  Experience,
+  Projects,
+  Education,
   Header,
   Break,
   Text,
   Skills,
   Skill,
-  Jobs,
+  List,
   Job,
   JobOverview,
   Role,
@@ -41,9 +45,7 @@ import {
   Technologies,
   Highlights,
   Highlight,
-  Projects,
   Project,
-  ProjectOverview,
   Name,
   Description,
   Website,
@@ -79,12 +81,12 @@ export const App = () => {
           </Contact>
         </Navigation>
         <Content>
-          <Section>
+          <Summary>
             <Header>Summary:</Header>
             <Break />
             <Text>{data.summary}</Text>
-          </Section>
-          <Section>
+          </Summary>
+          <Expertise>
             <Header>Expertise:</Header>
             <Break />
             <Skills>
@@ -92,11 +94,11 @@ export const App = () => {
                 <Skill key={skill}>{skill}</Skill>
               ))}
             </Skills>
-          </Section>
-          <Section>
+          </Expertise>
+          <Experience>
             <Header>Experience:</Header>
             <Break />
-            <Jobs>
+            <List>
               {data.jobs.map(
                 (
                   {
@@ -134,28 +136,26 @@ export const App = () => {
                   </Job>
                 )
               )}
-            </Jobs>
-          </Section>
-          <Section>
+            </List>
+          </Experience>
+          <Projects>
             <Header>Projects:</Header>
             <Break />
-            <Projects>
+            <List>
               {data.projects.map(
                 ({ name, description, website, repository, technologies }) => (
                   <Project key={name}>
-                    <ProjectOverview>
-                      <Name>{name}</Name>
-                      <Description>{description}</Description>
-                      <Website to={website} />
-                      <Repository to={repository} />
-                    </ProjectOverview>
+                    <Name>{name}</Name>
+                    <Description>{description}</Description>
+                    <Website to={website} />
+                    <Repository to={repository} />
                     <Technologies>{technologies.join(`, `)}</Technologies>
                   </Project>
                 )
               )}
-            </Projects>
-          </Section>
-          <Section>
+            </List>
+          </Projects>
+          <Education>
             <Header>Education:</Header>
             <Break />
             <Schools>
@@ -170,7 +170,7 @@ export const App = () => {
                 )
               )}
             </Schools>
-          </Section>
+          </Education>
         </Content>
         <Footer>
           <a href="/">

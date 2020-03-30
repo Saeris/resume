@@ -8,11 +8,7 @@ export const results = {
       { label: `Twitter`, to: `https://www.twitter.com/saeris` },
       { label: `GitHub`, to: `https://www.github.com/saeris` }
     ],
-    summary: `Self-taught software engineer and second-career developer,
-		previously having worked as a game designer. Educational
-		background in graphic design. Avid photographer, competitive
-		online gamer, and craft beer enthusiast. Highly values learning
-		and bringing people together.`,
+    summary: `Self-taught software engineer with a background in graphic design and game development. Enthusiastic about developer experience, tooling, and web accessibility. Avid photographer and competitive online gamer. Highly values learning and bringing people together.`,
     skills: [
       `JavaScript`,
       `TypeScript`,
@@ -22,10 +18,14 @@ export const results = {
       `React`,
       `Gatsby`,
       `Apollo`,
+      `Jest`,
+      `Styled-Components`,
       `Webpack / Babel`,
       `AWS Lambda`,
+      `GitKraken`,
       `JIRA`,
       `Figma`,
+      `Adobe Lightroom`,
       `Adobe Photoshop`,
       `Adobe Illustrator`
     ],
@@ -34,7 +34,7 @@ export const results = {
         role: `Front-End Engineer`,
         type: `Contract`,
         company: `CodeSandbox`,
-				print: true,
+        print: true,
         timeframe: `May 2019 - March 2020`,
         location: `Remote`,
         industry: `Software Development Tools`,
@@ -56,7 +56,7 @@ export const results = {
         role: `Full-Stack Engineer`,
         type: `Freelance`,
         company: null,
-				print: false,
+        print: false,
         timeframe: `Oct 2012 - May 2019`,
         location: `Pleasanton, CA`,
         industry: `Open Source Software Development`,
@@ -69,7 +69,7 @@ export const results = {
         role: `Front-End Developer`,
         type: `Full-Time`,
         company: `4-Tell`,
-				print: false,
+        print: false,
         timeframe: `Oct 2016 - Dec 2016`,
         location: `Portland, OR`,
         industry: `eCommerce SaaS`,
@@ -81,14 +81,14 @@ export const results = {
           `Microsoft Azure`
         ],
         highlights: [
-					`Developed a prototype application using the Aurelia Framework. Implemented a CI/CD pipeline deploying to Microsoft Azure and collaborated with the CTO on API design.`
+          `Developed a prototype application using the Aurelia Framework. Implemented a CI/CD pipeline deploying to Microsoft Azure and collaborated with the CTO on API design.`
         ]
       },
       {
         role: `Developer III`,
         type: `Full-Time`,
         company: `Catalyst DevWorks`,
-				print: true,
+        print: true,
         timeframe: `Aug 2015 - Feb 2016`,
         location: `Beaverton, OR`,
         industry: `Software Engineering Services`,
@@ -109,7 +109,7 @@ export const results = {
         role: `Front-End Developer`,
         type: `Contract`,
         company: `Sellpoints`,
-				print: true,
+        print: true,
         timeframe: `Dec 2014 – May 2015`,
         location: `Emeryville, CA`,
         industry: `Online Marketing & Advertising`,
@@ -126,7 +126,7 @@ export const results = {
         name: `Rachel Taylor Design`,
         description: `Portfolio Website built with Gatsby`,
         website: `https://rtaylor.design`,
-        repository: `https://github.com/Saeris/Gatsby-Portfolio-Template`,
+        repository: `https://github.com/Saeris/gatsby-process`,
         technologies: [
           `Gatsby`,
           `TypeScript`,

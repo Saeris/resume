@@ -34,7 +34,7 @@ const overview = ({ theme }: { theme: DefaultTheme }) => css`
   width: 100%;
   color: ${theme.colors.primary};
   font-size: ${theme.sizes.body};
-  font-weight: 300;
+  font-weight: ${theme.weights.light};
   line-height: ${theme.sizes.header};
 `;
 
@@ -54,46 +54,78 @@ export const Main = styled.main(
 );
 
 export const Navigation = styled.header(
-  () => css`
-    grid-row: header;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  ({ theme }) => css`
+    display: grid;
+    grid-template:
+      "fullname"
+      "title"
+      "contact";
     width: 100%;
+
+    @media print {
+      grid-template:
+        "fullname contact" min-content
+        "title contact" min-content / minmax(0, 1fr) max-content;
+      margin-bottom: ${theme.sizes.small};
+    }
   `
 );
 
 export const Fullname = styled.h1(
   ({ theme }) => css`
     ${gradient};
+    grid-area: fullname;
     margin: 0;
     color: ${theme.colors.primary};
     font-family: ${theme.fonts.title};
     font-size: ${theme.sizes.title};
     line-height: 3rem;
     text-transform: uppercase;
+
+    @media screen {
+      text-align: center;
+    }
+
+    @media print {
+      font-size: 5.2rem;
+      line-height: 5rem;
+    }
   `
 );
 
 export const Title = styled.h2(
   ({ theme }) => css`
     ${gradient};
+    grid-area: title;
     margin: 0;
     color: ${theme.colors.secondary};
     font-size: ${theme.sizes.subtitle};
-    font-weight: 200;
+    font-weight: ${theme.weights.extralight};
+
+    @media screen {
+      text-align: center;
+    }
+
+    @media print {
+      font-size: 3.55rem;
+      line-height: 3rem;
+    }
   `
 );
 
 export const Contact = styled.address(
   () => css`
+    grid-area: contact;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, max-content));
-    grid-gap: 1ch;
     justify-content: space-around;
     width: 100%;
-    margin: 0.75rem 0;
     font-style: normal;
+
+    @media screen {
+      grid-template-columns: repeat(4, minmax(0, max-content));
+      grid-gap: 1ch;
+      margin: 0.75rem 0;
+    }
   `
 );
 
@@ -129,35 +161,77 @@ export const Service = styled(Link)<{ label?: string }>(
 );
 
 export const Content = styled.article(
-  () => css`
+  ({ theme }) => css`
     position: relative;
-    grid-row: content;
+    display: grid;
+    grid-template:
+      "summary"
+      "expertise"
+      "experience"
+      "projects"
+      "education";
+    grid-row-gap: ${theme.sizes.small};
+    grid-column-gap: 2ch;
     width: 100%;
+
+    @media print {
+      grid-template:
+        "summary summary"
+        "projects expertise"
+        "projects experience"
+        "education experience" / 30% minmax(0, 70%);
+    }
   `
 );
 
-export const Section = styled.section(
-  ({ theme }) => css`
+const Section = styled.section(
+  () => css`
     position: relative;
     break-inside: avoid;
+  `
+);
 
-    &:not(:last-child) {
-      margin-bottom: ${theme.sizes.small};
+export const Summary = styled(Section)`
+  grid-area: summary;
+`;
 
-      @media print {
-        margin-bottom: 0.4rem;
+export const Expertise = styled(Section)`
+  grid-area: expertise;
+`;
+
+export const Experience = styled(Section)(
+  ({ theme }) => css`
+    grid-area: experience;
+
+    @media print {
+      h3 {
+        font-size: 0;
+
+        &:after {
+          content: "Relevant Experience:";
+          font-size: ${theme.sizes.header};
+        }
       }
     }
   `
 );
 
+export const Projects = styled(Section)`
+  grid-area: projects;
+`;
+
+export const Education = styled(Section)`
+  grid-area: education;
+`;
+
 export const Header = styled.h3(
   ({ theme }) => css`
+    position: relative;
     ${gradient};
     margin: 0;
     color: ${theme.colors.primary};
     font-size: ${theme.sizes.header};
-    font-weight: 300;
+    font-weight: ${theme.weights.light};
     break-before: ;
   `
 );
@@ -173,7 +247,6 @@ export const Text = styled.p(
   ({ theme }) => css`
     margin-bottom: 0.5em;
     font-size: ${theme.sizes.body};
-    text-indent: 2ch;
   `
 );
 
@@ -181,12 +254,8 @@ export const Skills = styled.ul(
   ({ theme }) => css`
     ${list};
     display: grid;
-    grid-template-columns: repeat(5, minmax(max-content, 1fr));
+    grid-template-columns: repeat(6, minmax(max-content, 1fr));
     grid-column-gap: ${theme.sizes.header};
-
-    @media print {
-      grid-template-columns: repeat(8, minmax(max-content, 1fr));
-    }
   `
 );
 
@@ -197,7 +266,7 @@ export const Skill = styled.li(
   `
 );
 
-export const Jobs = styled.ul(
+export const List = styled.ul(
   ({ theme }) => css`
     ${list};
     display: grid;
@@ -254,7 +323,7 @@ export const Role = styled.div(
     grid-area: role;
     color: ${theme.colors.secondary};
     font-size: ${theme.sizes.label};
-    font-weight: 500;
+    font-weight: ${theme.weights.semibold};
 
     @media print {
       ${divider};
@@ -301,19 +370,26 @@ export const Location = styled.div(
 export const JobMeta = styled.div(
   ({ theme }) => css`
     display: grid;
-    grid-template-columns:
-      [industry-start]
-      max-content
-      [industry-end technologies-start]
-      minmax(max-content, 1fr)
-      [technologies-end];
-    grid-column-gap: 1ch;
     width: 100%;
     margin-bottom: 0.4rem;
     color: ${theme.colors.primary};
     font-size: ${theme.sizes.small};
-    font-weight: 300;
+    font-weight: ${theme.weights.light};
     line-height: ${theme.sizes.label};
+
+    @media screen {
+      grid-template:
+        "industry technologies"
+        / max-content minmax(max-content, 1fr);
+      grid-column-gap: 1ch;
+    }
+
+    @media print {
+      grid-template:
+        "industry"
+        "technologies";
+      grid-row-gap: 0.4rem;
+    }
   `
 );
 
@@ -334,7 +410,7 @@ export const Technologies = styled.div(
     grid-area: technologies;
     color: ${theme.colors.primary};
     font-size: ${theme.sizes.small};
-    font-weight: 300;
+    font-weight: ${theme.weights.light};
     line-height: ${theme.sizes.label};
 
     &:before {
@@ -354,21 +430,23 @@ export const Highlights = styled.ul(
 
 export const Highlight = styled.li(() => css``);
 
-export const Projects = styled.ul(
-  ({ theme }) => css`
-    ${list};
-    display: grid;
-    grid-gap: ${theme.sizes.label};
-
-    @media print {
-      grid-gap: ${theme.sizes.small};
-    }
-  `
-);
-
 export const Project = styled.li(
   () => css`
+    ${overview};
+    grid-template:
+      "name description website repository"
+      "technologies technologies technologies technologies" /
+      max-content minmax(max-content, 1fr) max-content 12ch;
+    grid-row-gap: 0.4rem;
+
     @media print {
+      grid-template:
+        "name"
+        "description"
+        "technologies"
+        "website"
+        "repository";
+
       &:nth-of-type(n + 6) {
         display: none;
       }
@@ -376,41 +454,16 @@ export const Project = styled.li(
   `
 );
 
-export const ProjectOverview = styled.div(
-  () => css`
-    ${overview};
-    grid-template-columns:
-      [name-start]
-      max-content
-      [name-end description-start]
-      minmax(max-content, 1fr)
-      [description-end website-start]
-      max-content
-      [website-end repository-start]
-      12ch
-      [repository-end];
-    margin-bottom: 0.4rem;
-
-    @media print {
-      grid-template-columns:
-        [name-start]
-        max-content
-        [name-end description-start]
-        minmax(max-content, 1fr)
-        [description-end website-start]
-        max-content
-        [website-end];
-    }
-  `
-);
-
 export const Name = styled.div(
   ({ theme }) => css`
-    ${divider};
     grid-area: name;
     color: ${theme.colors.secondary};
     font-size: ${theme.sizes.label};
-    font-weight: 500;
+    font-weight: ${theme.weights.semibold};
+
+    @media screen {
+      ${divider};
+    }
   `
 );
 
@@ -439,14 +492,14 @@ export const Website = styled(Link).attrs(({ to = `` }) => ({
   ({ to = `` }) => css`
     ${linkText};
     grid-area: website;
-    justify-self: flex-end;
-    direction: rtl;
 
     &:after {
       content: "${to.replace(`https://`, ``)}";
       @media screen {
-        content: "Website";
         ${divider};
+        content: "Website";
+        justify-self: flex-end;
+        direction: rtl;
         right: 0;
       }
     }
@@ -456,16 +509,15 @@ export const Website = styled(Link).attrs(({ to = `` }) => ({
 export const Repository = styled(Link).attrs(({ to = `` }) => ({
   children: `- Repository: ${to}`
 }))(
-  () => css`
+  ({ to = `` }) => css`
     ${linkText};
     grid-area: repository;
 
     &:after {
-      content: "Repository";
-    }
-
-    @media print {
-      display: none;
+      content: "${to.replace(`https://`, ``)}";
+      @media screen {
+        content: "Repository";
+      }
     }
   `
 );
@@ -489,14 +541,25 @@ export const School = styled.li(
       [graduated-end location-start]
       12ch
       [location-end];
+
+    @media print {
+      grid-template:
+        "name"
+        "description"
+        "location"
+        "graduated";
+    }
   `
 );
 
 export const Graduated = styled.div(
   () => css`
-    ${divider};
     grid-area: graduated;
-    justify-self: flex-end;
+
+    @media screen {
+      ${divider};
+      justify-self: flex-end;
+    }
   `
 );
 

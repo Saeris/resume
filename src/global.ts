@@ -25,9 +25,11 @@ export const GlobalStyles = createGlobalStyle(
     a {
       text-decoration: none;
       transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
+      color: ${theme.colors.primary};
 
       &:hover,
       &:focus {
+        color: ${theme.colors.secondary};
         text-decoration: none;
       }
     }
