@@ -117,8 +117,8 @@ export const App = () => {
                   <Job key={i} print={print}>
                     <JobOverview>
                       <Role>{role}</Role>
-                      <Type>{type}</Type>
                       {company && <Company>{company}</Company>}
+                      <Type>{type}</Type>
                       <Timeframe>{timeframe}</Timeframe>
                       <Location>{location}</Location>
                     </JobOverview>
@@ -173,7 +173,7 @@ export const App = () => {
           </Education>
         </Content>
         <Footer>
-          <a href="/">
+          <a title="Saeris.io - Home" href="/">
             <Logo />
           </a>
         </Footer>

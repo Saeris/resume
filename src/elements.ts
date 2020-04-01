@@ -8,10 +8,13 @@ const list = css`
   list-style: none;
 `;
 
-const divider = ({ theme }: { theme: DefaultTheme }) => css`
-  padding-right: 1ch;
-  border-right: 0.15rem solid ${theme.colors.secondary};
-  box-sizing: border-box;
+const divider = (side: string = `right`) => ({
+  theme
+}: {
+  theme: DefaultTheme;
+}) => css`
+  padding-${side}: 1ch;
+  border-${side}: 0.15rem solid ${theme.colors.secondary};
 `;
 
 const gradient = ({ theme }: { theme: DefaultTheme }) => css`
@@ -50,6 +53,11 @@ export const Main = styled.main(
     font-family: ${theme.fonts.body};
     color: ${theme.colors.text};
     box-decoration-break: clone;
+
+    @media screen {
+      display: grid;
+      grid-gap: ${theme.sizes.small};
+    }
   `
 );
 
@@ -292,54 +300,29 @@ export const JobOverview = styled.div(
     grid-template-columns:
       [role-start]
       max-content
-      [role-end type-start]
-      max-content
-      [type-end company-start]
+      [role-end company-start]
       minmax(max-content, 1fr)
       [company-end timeframe-start]
       max-content
-      [timeframe-end location-start]
-      12ch
+      [timeframe-end type-start]
+      max-content
+      [type-end location-start]
+      13ch
       [location-end];
-    margin-bottom: 0.4rem;
 
-    @media print {
-      grid-template-columns:
-        [role-start]
-        max-content
-        [role-end company-start]
-        minmax(max-content, 1fr)
-        [company-end type-start]
-        max-content
-        [type-end location-start]
-        12ch
-        [location-end];
+    @media screen {
+      margin-bottom: 0.4rem;
     }
   `
 );
 
 export const Role = styled.div(
   ({ theme }) => css`
+    ${divider()};
     grid-area: role;
     color: ${theme.colors.secondary};
     font-size: ${theme.sizes.label};
     font-weight: ${theme.weights.semibold};
-
-    @media print {
-      ${divider};
-    }
-  `
-);
-
-export const Type = styled.div(
-  ({ theme }) => css`
-    ${divider};
-    grid-area: type;
-    color: ${theme.colors.text};
-
-    @medai print {
-      justify-self: flex-end;
-    }
   `
 );
 
@@ -350,14 +333,24 @@ export const Company = styled.div(
 );
 
 export const Timeframe = styled.div(
-  () => css`
-    ${divider};
+  ({ children, theme }) => css`
     grid-area: timeframe;
     justify-self: flex-end;
+    padding-right: 1ch;
+    font-size: 0;
 
-    @media print {
-      display: none;
+    &:after {
+      content: "${(children as string).replace(/\//g, `.`)}";
+      font-size: ${theme.sizes.body};
     }
+  `
+);
+
+export const Type = styled.div(
+  () => css`
+    ${divider()};
+    grid-area: type;
+    justify-self: flex-end;
   `
 );
 
@@ -462,7 +455,7 @@ export const Name = styled.div(
     font-weight: ${theme.weights.semibold};
 
     @media screen {
-      ${divider};
+      ${divider()};
     }
   `
 );
@@ -496,7 +489,7 @@ export const Website = styled(Link).attrs(({ to = `` }) => ({
     &:after {
       content: "${to.replace(`https://`, ``)}";
       @media screen {
-        ${divider};
+        ${divider()};
         content: "Website";
         justify-self: flex-end;
         direction: rtl;
@@ -539,7 +532,7 @@ export const School = styled.li(
       [description-end graduated-start]
       max-content
       [graduated-end location-start]
-      12ch
+      13ch
       [location-end];
 
     @media print {
@@ -557,7 +550,7 @@ export const Graduated = styled.div(
     grid-area: graduated;
 
     @media screen {
-      ${divider};
+      ${divider()};
       justify-self: flex-end;
     }
   `
