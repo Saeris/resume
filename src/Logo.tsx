@@ -68,7 +68,7 @@ export const Logo: React.FC<LogoProps> = ({
           overflow="visible"
           width="2560"
           height="1440"
-          xlinkHref="/bg.jpg"
+          xlinkHref="/bg.webp"
           transform="matrix(1.937500e-02 0 0 1.937500e-02 -8.7994 1.8282)"
         ></image>
       </g>
