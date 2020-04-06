@@ -7,11 +7,7 @@ export interface Bounds {
 }
 
 export interface Media {
-  between: (
-    lowerBound: Bounds,
-    upperBound: Bounds,
-    excludeLarge?: boolean
-  ) => string;
+  between: (lowerBound: Bounds, upperBound: Bounds, excludeLarge?: boolean) => string;
   greaterThan: (size: Bounds) => string;
   lessThan: (size: Bounds) => string;
   size: (size: Bounds) => string;
@@ -31,13 +27,9 @@ export interface Theme {
   };
   fonts: {
     /** 'Orbitron', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif */
-    title:
-      | "'Orbitron', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif"
-      | "var(--fonts-title)";
+    title: "'Orbitron', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif" | "var(--fonts-title)";
     /** 'Titillium Web', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif */
-    body:
-      | "'Titillium Web', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif"
-      | "var(--fonts-body)";
+    body: "'Titillium Web', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif" | "var(--fonts-body)";
   };
   sizes: {
     /** 3.8rem */
@@ -125,9 +117,7 @@ export const theme: Theme = Object.defineProperties(
       value: {
         between(lowerBound, upperBound, excludeLarge = false) {
           if (excludeLarge) {
-            return `@media (min-width: ${
-              lowerBound.min
-            }px) and (max-width: ${upperBound.min - 1}px)`;
+            return `@media (min-width: ${lowerBound.min}px) and (max-width: ${upperBound.min - 1}px)`;
           }
           if (upperBound.max === Infinity) {
             return `@media (min-width: lowerBound.min}px)`;

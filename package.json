@@ -9,41 +9,68 @@
     "url": "https://github.com/saeris/resume-2020.git"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "postbuild": "react-snap",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "per-env",
+    "start:production": "npm run -s serve",
+    "start:development": "npm run -s dev",
+    "build": "preact build --verbose --template public/index.html",
+    "serve": "yarn build && sirv build --port 3000 --cors --single",
+    "dev": "preact watch --port 3000 --template public/index.html",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "test": "jest ./tests"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{css,md,scss}": "prettier --write",
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
+  },
+  "eslintIgnore": [
+    "build/*"
+  ],
   "dependencies": {
-    "@mdx-js/runtime": "^1.5.7",
-    "preact": "^10.3.4",
-    "preact-compat": "^3.19.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "preact": "^10.3.1",
+    "preact-jsx-chai": "^3.0.0",
+    "preact-markup": "^2.0.0",
+    "preact-render-to-string": "^5.1.4",
+    "preact-router": "^3.2.1",
     "react-icons": "^3.9.0",
+    "reakit": "^1.0.0-rc.0",
+    "snarkdown": "^1.2.2",
     "styled-components": "^5.0.1",
     "typeface-orbitron": "^1.1.3",
     "typeface-titillium-web": "^0.0.72"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.1.1",
-    "@testing-library/react": "^10.0.1",
-    "@testing-library/user-event": "^10.0.0",
-    "@types/jest": "^25.1.4",
-    "@types/node": "^13.9.1",
-    "@types/react": "^16.9.23",
-    "@types/react-dom": "^16.9.5",
+    "@types/jest": "^25.1.5",
     "@types/styled-components": "^5.0.1",
-    "react-scripts": "3.4.0",
-    "react-snap": "^1.23.0",
-    "typescript": "^3.8.3"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "reactSnap": {
-    "inlineCss": true
+    "@types/webpack-env": "^1.15.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "husky": "^4.2.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.2.7",
+    "jsdom": "^16.2.2",
+    "lint-staged": "^10.0.7",
+    "per-env": "^1.0.2",
+    "preact-cli": "^3.0.0-next.19",
+    "preact-cli-plugin-typescript": "^0.2.2",
+    "preact-render-spy": "^1.3.0",
+    "prettier": "^2.0.2",
+    "sirv-cli": "^1.0.0-next.3",
+    "ts-jest": "^25.3.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "typings-for-css-modules-loader": "^1.7.0"
   },
   "browserslist": {
     "production": [

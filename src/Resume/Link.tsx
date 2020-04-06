@@ -1,7 +1,9 @@
-import React from "react";
+import { h } from "preact";
+import { forwardRef } from "preact/compat";
 
 export interface LinkProps {
   to?: string;
+  children?: React.ElementType;
 }
 
 // eslint-disable-next-line
@@ -20,17 +22,8 @@ const getProtocol = (link: string): string => {
   }
 };
 
-export const Link: React.FC<LinkProps> = React.forwardRef<
-  HTMLAnchorElement,
-  LinkProps
->(({ to, children, ...props }, ref) => (
-  <a
-    ref={ref}
-    href={getProtocol(to as string)}
-    {...props}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+export const Link: React.FC<LinkProps> = forwardRef<HTMLAnchorElement, LinkProps>(({ to, children, ...props }, ref) => (
+  <a ref={ref} href={getProtocol(to as string)} {...props} target="_blank" rel="noopener noreferrer">
     {children}
   </a>
 ));

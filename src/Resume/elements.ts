@@ -8,22 +8,14 @@ const list = css`
   list-style: none;
 `;
 
-const divider = (side: string = `right`) => ({
-  theme
-}: {
-  theme: DefaultTheme;
-}) => css`
+const divider = (side = `right`) => ({ theme }: { theme: DefaultTheme }) => css`
   padding-${side}: 1ch;
   border-${side}: 0.15rem solid ${theme.colors.secondary};
 `;
 
 const gradient = ({ theme }: { theme: DefaultTheme }) => css`
   @media screen {
-    background: linear-gradient(
-      300deg,
-      ${theme.colors.primary} 0%,
-      ${theme.colors.secondary} 100%
-    );
+    background: linear-gradient(300deg, ${theme.colors.primary} 0%, ${theme.colors.secondary} 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -137,7 +129,10 @@ export const Contact = styled.address(
   `
 );
 
-export const Service = styled(Link)<{ label?: string }>(
+export const Service = styled(Link)<{
+  label?: string;
+  children?: React.ReactNode;
+}>(
   ({ theme, label = `` }) => css`
     display: inline-flex;
     align-items: center;
@@ -333,7 +328,7 @@ export const Company = styled.div(
 );
 
 export const Timeframe = styled.div(
-  ({ children, theme }) => css`
+  ({ children = ``, theme }) => css`
     grid-area: timeframe;
     justify-self: flex-end;
     padding-right: 1ch;

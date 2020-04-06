@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components"
-import { bg } from "./bg"
+import { h } from "preact";
+import styled from "styled-components";
 
 export interface LogoProps extends React.HTMLAttributes<SVGElement> {
   scale?: number;
@@ -9,21 +8,15 @@ export interface LogoProps extends React.HTMLAttributes<SVGElement> {
 }
 
 const Overlay = styled.g`
-	opacity: 0.25;
-	transition: opacity 1s ease-in-out;
+  opacity: 0.25;
+  transition: opacity 1s ease-in-out;
 
-	&:hover {
-		opacity: 0.75;
-	}
-`
+  &:hover {
+    opacity: 0.75;
+  }
+`;
 
-export const Logo: React.FC<LogoProps> = ({
-  scale = 1,
-  width = 32,
-  height = 32,
-  children,
-  ...props
-}) => (
+export const Logo: React.FC<LogoProps> = ({ scale = 1, width = 32, height = 32 }) => (
   <svg
     width={scale * width}
     height={scale * height}
@@ -31,7 +24,6 @@ export const Logo: React.FC<LogoProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    {...props}
   >
     <path
       fill="#F3F6F8"
@@ -69,19 +61,12 @@ export const Logo: React.FC<LogoProps> = ({
           overflow="visible"
           width="2560"
           height="1440"
-          xlinkHref={bg}
+          xlinkHref="/bg.webp"
           transform="matrix(1.937500e-02 0 0 1.937500e-02 -8.7994 1.8282)"
         ></image>
       </g>
       <g clipPath="url(#Clip)" style={{ mixBlendMode: `multiply` }}>
-        <linearGradient
-          id="Edge"
-          gradientUnits="userSpaceOnUse"
-          x1="16.0292"
-          y1="29.1818"
-          x2="16.0292"
-          y2="3.8605"
-        >
+        <linearGradient id="Edge" gradientUnits="userSpaceOnUse" x1="16.0292" y1="29.1818" x2="16.0292" y2="3.8605">
           <stop offset="0" stopColor="#000000" />
           <stop offset="1" stopColor="#FFFFFF" />
         </linearGradient>
@@ -113,14 +98,7 @@ export const Logo: React.FC<LogoProps> = ({
 				c2.9-1.4,6.6-2.1,9.8-1.9c0.3,0,0.5,0,0.8,0c0.3,0,0.6,0.1,0.9,0.1c2.6,0.1,3.7-0.5,5-0.9c0.2-0.1,0.4-0.1,0.6-0.1
 				c0.7,0,1.6,0.4,1.9,0.7C32.3,4.4,30.6,6.8,29.9,7.5z"
         />
-        <linearGradient
-          id="Gradient"
-          gradientUnits="userSpaceOnUse"
-          x1="2.1068"
-          y1="29.0664"
-          x2="29.559"
-          y2="1.6142"
-        >
+        <linearGradient id="Gradient" gradientUnits="userSpaceOnUse" x1="2.1068" y1="29.0664" x2="29.559" y2="1.6142">
           <stop offset="0" stopColor="#000000" />
           <stop offset="1" stopColor="#FFFFFF" />
         </linearGradient>
