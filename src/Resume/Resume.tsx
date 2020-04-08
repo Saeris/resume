@@ -38,7 +38,7 @@ export const Resume = () => {
         <Contact>
           {data.contacts.map(({ label, to }) => (
             // @ts-ignore
-            <Service key={label} label={label}>
+            <Service key={label} label={label} to={to}>
               {Icons[label]} {to.replace(`https://www.`, ``)}
             </Service>
           ))}
