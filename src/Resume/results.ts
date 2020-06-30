@@ -182,7 +182,7 @@ export const results: { data: Results } = {
         name: `React Keyrune`,
         description: `Magic: The Gathering Set Icons Component Library`,
         website: `https://react-keyrune.saeris.io`,
-        repository: `https://github.com/Saeris/react-keyrun`,
+        repository: `https://github.com/Saeris/react-keyrune`,
         technologies: [`React`, `Emotion`, `Sass`, `Jest`]
       },
       {
