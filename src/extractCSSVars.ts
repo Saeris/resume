@@ -1,30 +1,29 @@
-import { css, DefaultTheme } from "styled-components";
+import type { DefaultTheme, FlattenSimpleInterpolation } from "styled-components";
+import { css } from "styled-components";
 
-const createProps = (namespace: string, props: Record<string, string | number>) =>
-  Object.entries(props).reduce((declartions, [key, value]) => {
-    return css`${declartions}--${namespace}-${key}: ${value};`;
-  }, css``);
+const createProps = (namespace: string, props: Record<string, string | number>): FlattenSimpleInterpolation =>
+  Object.entries(props).reduce(
+    (declartions, [key, value]) => css`${declartions}--${namespace}-${key}: ${value};`,
+    css``
+  );
 
 const createVars = <T>(namespace: keyof DefaultTheme, props: T): T =>
-  Object.keys(props).reduce((declartions, key) => {
-    return {
+  (Object.keys(props).reduce(
+    (declartions, key) => ({
       ...declartions,
       [key]: `var(--${String(namespace)}-${key})`
-    };
-  }, {} as T);
+    }),
+    {}
+  ) as unknown) as T;
 
-export const extractCSSProps = (theme: DefaultTheme) => css`
+export const extractCSSProps = (theme: DefaultTheme): FlattenSimpleInterpolation => css`
   :root {
     ${Object.entries(theme).map(([key, value]: [string, Record<string, string | number>]) => createProps(key, value))}
   }
 `;
 
-export const extractCSSVars = (theme: DefaultTheme) => {
-  const modified: DefaultTheme = Object.create(theme);
-
-  for (const [key, value] of Object.entries(theme)) {
-    modified[key as keyof DefaultTheme] = createVars(key as keyof DefaultTheme, value);
-  }
-
-  return modified;
-};
+export const extractCSSVars = (theme: DefaultTheme): DefaultTheme =>
+  Object.entries(theme).reduce<DefaultTheme>((modified, [key, value]) => {
+    modified[key] = createVars(key as keyof DefaultTheme, value);
+    return modified;
+  }, Object.create(theme));

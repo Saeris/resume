@@ -1,14 +1,13 @@
+import type { ComponentType, FunctionComponent } from "preact";
 import { h } from "preact";
-// @ts-ignore
 import Markup from "preact-markup";
-// @ts-ignore
 import snarkdown from "snarkdown";
 
 interface MarkdownProps {
   markdown: string;
-  components: Record<string, React.ElementType>;
+  components: Record<string, ComponentType>;
 }
 
-export const Markdown: React.FC<MarkdownProps> = ({ markdown, ...props }) => (
+export const Markdown: FunctionComponent<MarkdownProps> = ({ markdown, ...props }) => (
   <Markup markup={snarkdown(markdown)} type="html" trim={false} {...props} />
 );

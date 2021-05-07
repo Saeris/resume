@@ -2,8 +2,8 @@ import "typeface-orbitron";
 import "typeface-titillium-web";
 
 export interface Bounds {
-  min: number;
-  max: number;
+  min?: number;
+  max?: number;
 }
 
 export interface Media {
@@ -23,6 +23,7 @@ export interface Theme {
     laptop: { min: 769; max: 1024 };
     laptopLarge: { min: 1025; max: 1440 };
     desktop: { min: 1441; max: 1920 };
+    // eslint-disable-next-line @typescript-eslint/no-loss-of-precision
     desktopLarge: { min: 1921; max: 999e308 };
   };
   fonts: {
@@ -116,26 +117,28 @@ export const theme: Theme = Object.defineProperties(
     media: {
       value: {
         between(lowerBound, upperBound, excludeLarge = false) {
-          if (excludeLarge) {
+          if (excludeLarge && lowerBound.min && upperBound.min) {
             return `@media (min-width: ${lowerBound.min}px) and (max-width: ${upperBound.min - 1}px)`;
           }
-          if (upperBound.max === Infinity) {
-            return `@media (min-width: lowerBound.min}px)`;
+          if (upperBound.max === Infinity && lowerBound.min) {
+            return `@media (min-width: ${lowerBound.min}}px)`;
           }
-          return `@media (min-width: lowerBound.min}px) and (max-width: ${upperBound.max}px)`;
+          return `@media (min-width: ${lowerBound.min ? lowerBound.min : 0}px) and (max-width: ${upperBound.max ? upperBound.max : Infinity}px)`;
         },
 
         greaterThan(size) {
-          return `@media (min-width: ${size.min}px)`;
+          return `@media (min-width: ${size.min ? size.min : 0}px)`;
         },
 
         lessThan(size) {
-          return `@media (max-width: ${size.min - 1}px)`;
+          return `@media (max-width: ${size.min ? size.min : 1 - 1}px)`;
         },
 
         size(size) {
-          if (size.min === null) return theme.media.lessThan(size);
-          if (size.max === null) return theme.media.greaterThan(size);
+          // eslint-disable-next-line no-undefined
+          if (size.min === undefined) return theme.media.lessThan(size);
+          // eslint-disable-next-line no-undefined
+          if (size.max === undefined) return theme.media.greaterThan(size);
           return theme.media.between(size, size);
         }
       } as Media
@@ -149,6 +152,7 @@ export const theme: Theme = Object.defineProperties(
         laptop: { min: 769, max: 1024 },
         laptopLarge: { min: 1025, max: 1440 },
         desktop: { min: 1441, max: 1920 },
+        // eslint-disable-next-line @typescript-eslint/no-loss-of-precision
         desktopLarge: { min: 1921, max: 999e308 }
       }
     }

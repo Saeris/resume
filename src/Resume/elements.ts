@@ -1,4 +1,7 @@
-import styled, { css, DefaultTheme } from "styled-components";
+import type { FlattenSimpleInterpolation } from "styled-components";
+import styled, { css } from "styled-components";
+import type { Theme } from "../theme";
+import type { LinkProps } from "./Link";
 import { Link } from "./Link";
 
 const list = css`
@@ -8,12 +11,12 @@ const list = css`
   list-style: none;
 `;
 
-const divider = (side = `right`) => ({ theme }: { theme: DefaultTheme }) => css`
+const divider = (side = `right`) => ({ theme }: { theme: Theme }): FlattenSimpleInterpolation => css`
   padding-${side}: 1ch;
   border-${side}: 0.15rem solid ${theme.colors.secondary};
 `;
 
-const gradient = ({ theme }: { theme: DefaultTheme }) => css`
+const gradient = ({ theme }: { theme: Theme }): FlattenSimpleInterpolation => css`
   @media screen {
     background: linear-gradient(300deg, ${theme.colors.primary} 0%, ${theme.colors.secondary} 100%);
     background-clip: text;
@@ -22,7 +25,7 @@ const gradient = ({ theme }: { theme: DefaultTheme }) => css`
   }
 `;
 
-const overview = ({ theme }: { theme: DefaultTheme }) => css`
+const overview = ({ theme }: { theme: Theme }): FlattenSimpleInterpolation => css`
   display: grid;
   grid-column-gap: 1ch;
   align-items: baseline;
@@ -131,7 +134,7 @@ export const Contact = styled.address(
 
 export const Service = styled(Link)<{
   label?: string;
-  children?: React.ReactNode;
+  children?: ChildNode;
 }>(
   ({ theme, label = `` }) => css`
     display: inline-flex;
@@ -235,7 +238,6 @@ export const Header = styled.h3(
     color: ${theme.colors.primary};
     font-size: ${theme.sizes.header};
     font-weight: ${theme.weights.light};
-    break-before: ;
   `
 );
 
@@ -462,7 +464,7 @@ export const Description = styled.div(
   `
 );
 
-const linkText = ({ theme }: { theme: DefaultTheme }) => css`
+const linkText = ({ theme }: { theme: Theme }): FlattenSimpleInterpolation => css`
   align-self: flex-start;
   color: ${theme.colors.primary};
   font-size: 0;
@@ -474,9 +476,9 @@ const linkText = ({ theme }: { theme: DefaultTheme }) => css`
   }
 `;
 
-export const Website = styled(Link).attrs(({ to = `` }) => ({
+export const Website = styled(Link).attrs<LinkProps>(({ to = `` }) => ({
   children: `- Website: ${to}`
-}))(
+}))<LinkProps>(
   ({ to = `` }) => css`
     ${linkText};
     grid-area: website;
@@ -494,9 +496,9 @@ export const Website = styled(Link).attrs(({ to = `` }) => ({
   `
 );
 
-export const Repository = styled(Link).attrs(({ to = `` }) => ({
+export const Repository = styled(Link).attrs<LinkProps>(({ to = `` }) => ({
   children: `- Repository: ${to}`
-}))(
+}))<LinkProps>(
   ({ to = `` }) => css`
     ${linkText};
     grid-area: repository;

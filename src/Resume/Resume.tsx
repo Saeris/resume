@@ -1,3 +1,4 @@
+import type { FunctionComponent } from "preact";
 import { h } from "preact";
 import { Icons } from "./Icons";
 import { Logo } from "./Logo";
@@ -28,7 +29,7 @@ import {
   Footer
 } from "./elements";
 
-export const Resume = () => {
+export const Resume: FunctionComponent = () => {
   const { data } = results;
   return (
     <Main>
@@ -37,7 +38,7 @@ export const Resume = () => {
         <Title>{data.title}</Title>
         <Contact>
           {data.contacts.map(({ label, to }) => (
-            // @ts-ignore
+            // @ts-expect-error
             <Service key={label} label={label} to={to}>
               {Icons[label]} {to.replace(`https://www.`, ``)}
             </Service>
@@ -63,8 +64,8 @@ export const Resume = () => {
           <Header>Experience:</Header>
           <Break />
           <List>
-            {data.jobs.map((props, i) => (
-              <Job key={i} {...props} />
+            {data.jobs.map((props) => (
+              <Job key={props.role} {...props} />
             ))}
           </List>
         </Experience>
@@ -72,8 +73,8 @@ export const Resume = () => {
           <Header>Projects:</Header>
           <Break />
           <List>
-            {data.projects.map((props, i) => (
-              <Project key={i} {...props} />
+            {data.projects.map((props) => (
+              <Project key={props.name} {...props} />
             ))}
           </List>
         </Projects>
@@ -81,8 +82,8 @@ export const Resume = () => {
           <Header>Education:</Header>
           <Break />
           <Schools>
-            {data.schools.map((props, i) => (
-              <School key={i} {...props} />
+            {data.schools.map((props) => (
+              <School key={props.name} {...props} />
             ))}
           </Schools>
         </Education>

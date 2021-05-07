@@ -36,7 +36,7 @@ export const results: { data: Results } = {
       `HTML / CSS`,
       `GraphQL`,
       `Node.js`,
-      `React`,
+      `React / Nextjs`,
       `Gatsby`,
       `Apollo`,
       `Jest`,
@@ -52,6 +52,33 @@ export const results: { data: Results } = {
     ],
     jobs: [
       {
+        role: `Software Engineer II @ Nike`,
+        type: `Contract`,
+        company: `VanderHouwen`,
+        print: true,
+        timeframe: `10/20 - Present`,
+        location: `Remote`,
+        industry: `Online Retail`,
+        technologies: [
+          `Nodejs`,
+          `React`,
+          `Nextjs`,
+          `Typescript`,
+          `Babel`,
+          `Rollup`,
+          `ESLint`,
+          `Jest`,
+          `Open CLI Framework`
+        ],
+        highlights: [
+          `Established and applied new code-quality standards using ESLint and Typescript through the creation of a shared configuration package.`,
+          `Automated code-quality checks using Git hooks and deferred package versioning in CI.`,
+          `Created a CLI tool providing a unified interface for dev tooling to combat dependency churn and begin to standardize how applications and libraries are built, linted, and unit tested.`,
+          `Mentored colleagues in and migrated multiple internal core libraries to Typescript.`,
+          `Served as a core contributor on a team responsible for shipping a new Nextjs powered micro-frontend application platform.`
+        ]
+      },
+      {
         role: `Front-End Engineer`,
         type: `Contract`,
         company: `CodeSandbox`,
@@ -59,11 +86,11 @@ export const results: { data: Results } = {
         timeframe: `05/19 - 03/20`,
         location: `Remote`,
         industry: `Software Development Tools`,
-        technologies: [`React`, `TypeScript`, `Styled-Components`, `Reakit`, `Apollo`, `GraphQL`],
+        technologies: [`React`, `Typescript`, `Styled-Components`, `Reakit`, `Apollo`, `GraphQL`],
         highlights: [
           `Responsible for front-end work on [Custom Templates](https://codesandbox.io/post/Templates), enabling users to [build and share](https://codesandbox.io/post/hello-template-universe-goodbye-project-setup) their own reusable starter projects.`,
           `Built a 'crash handler' page, prototyped within CodeSandbox, providing users with a [tool to file crash reports](https://codesandbox.io/post/CodeSadbox) with pre-filled details. The dog-fooding process used to develop this feature is now used internally to quickly iterate on new UI features.`,
-          `Established coding style guidlines and implemented them alongside a refactor of dozens of components to React Hooks / TypeScript. Would later oversee a call for open-source contributions through [Hacktoberfest](https://github.com/codesandbox/codesandbox-client/issues/2621), resulting in [60+ submissions](https://github.com/codesandbox/codesandbox-client/issues?q=label%3A%22Hacktoberfest%22+-label%3A%22%F0%9F%96%A8+Duplicate%22+is%3Aclosed+) from multiple contributors.`
+          `Established coding style guidelines and implemented them alongside a refactor of dozens of components to React Hooks / TypeScript. Would later oversee a call for open-source contributions through [Hacktoberfest](https://github.com/codesandbox/codesandbox-client/issues/2621), resulting in [60+ submissions](https://github.com/codesandbox/codesandbox-client/issues?q=label%3A%22Hacktoberfest%22+-label%3A%22%F0%9F%96%A8+Duplicate%22+is%3Aclosed+) from multiple contributors.`
         ]
       },
       {
@@ -85,7 +112,7 @@ export const results: { data: Results } = {
         timeframe: `10/16 - 12/16`,
         location: `Portland, OR`,
         industry: `eCommerce SaaS`,
-        technologies: [`Aurelia`, `Redux`, `GraphQL`, `Highcharts`, `Microsoft Azure`],
+        technologies: [`Aurelia`, `Redux`, `GraphQL`],
         highlights: [
           `Developed a prototype application using the Aurelia Framework. Implemented a CI/CD pipeline deploying to Microsoft Azure and collaborated with the CTO on API design.`
         ]
@@ -98,7 +125,7 @@ export const results: { data: Results } = {
         timeframe: `08/15 - 02/16`,
         location: `Beaverton, OR`,
         industry: `Software Engineering Services`,
-        technologies: [`Aurelia`, `Sass`, `Apache Velocity`, `Liferay`, `Grunt`],
+        technologies: [`Aurelia`, `Sass`, `Apache Velocity`, `Liferay`],
         highlights: [
           `Responsible for front-end development of various UI components for [Regence Blue-Cross](https://www.regence.com/web/regence_individual/) and [Asuris Health](https://www.asuris.com/) at Cambia Health Solutions`,
           `Overhauled Node.js / Grunt build process and project organization, optimizing Node package usage (from 6+ Gb down to ~250 Mb) and reducing automated build times in Jenkins (from over 1 hour down to ~15 minutes), enabling faster iteration and higher productivity`,
@@ -109,7 +136,7 @@ export const results: { data: Results } = {
         role: `Front-End Developer`,
         type: `Contract`,
         company: `Sellpoints`,
-        print: true,
+        print: false,
         timeframe: `12/14 – 05/15`,
         location: `Emeryville, CA`,
         industry: `Online Marketing & Advertising`,
@@ -123,11 +150,18 @@ export const results: { data: Results } = {
     ],
     projects: [
       {
+        name: `Apollo Server Vercel`,
+        description: `Apollo Server integration for Vercel`,
+        website: `https://apollo-server-vercel.saeris.io/`,
+        repository: `https://github.com/Saeris/apollo-server-vercel`,
+        technologies: [`Apollo Server`, `GraphQL`, `Typescript`, `Nextjs`, `Jest`]
+      },
+      {
         name: `Rachel Taylor Design`,
         description: `Portfolio Website built with Gatsby`,
         website: `https://rtaylor.design`,
         repository: `https://github.com/Saeris/gatsby-process`,
-        technologies: [`Gatsby`, `TypeScript`, `Reakit`, `Styled-Components`, `Netlify Functions`]
+        technologies: [`Gatsby`, `Typescript`, `Reakit`, `Styled-Components`, `Netlify Functions`]
       },
       {
         name: `GraphQL Scalars`,

@@ -1,3 +1,4 @@
+import type { JSX } from "preact";
 import { h } from "preact";
 import { FaEnvelope as Email, FaLinkedin as LinkedIn, FaTwitter as Twitter, FaGithub as GitHub } from "react-icons/fa";
 

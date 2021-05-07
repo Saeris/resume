@@ -1,20 +1,53 @@
 {
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/__tests__/*.*", "**/*.d.ts"],
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    // Always include these settings
+    "composite": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    /* Basic Options */
+    "target": "ES2017",
+    "module": "ESNext",
+    "lib": [
+      "ESNext", // adds support for ESNext functionality
+      "dom.iterable",
+      "DOM" // adds support for 'window' other dom methods
+    ],
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
+
+    /* JSX support */
     "jsx": "react",
-    "jsxFactory": "h"
-  },
-  "include": ["src"]
+    "jsxFactory": "h",
+    "declaration": true,
+
+    /* Strict Type-Checking Options */
+    "strict": false,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    // "strictFunctionTypes": true,
+
+    /* Module Resolution Options */
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+    /* Plugins */
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "validate": false
+      }
+    ]
+  }
 }

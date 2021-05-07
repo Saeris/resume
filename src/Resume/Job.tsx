@@ -1,7 +1,8 @@
+import type { FunctionComponent } from "preact";
 import { h } from "preact";
 import { Markdown } from "./Markdown";
 import { Link } from "./Link";
-import { Results } from "./results";
+import type { Results } from "./results";
 import {
   Job as Container,
   JobOverview,
@@ -17,7 +18,7 @@ import {
   Technologies
 } from "./elements";
 
-export const Job: React.FC<Results["jobs"][0]> = ({
+export const Job: FunctionComponent<Results["jobs"][0]> = ({
   role,
   company,
   type,
@@ -41,8 +42,8 @@ export const Job: React.FC<Results["jobs"][0]> = ({
       <Technologies>{technologies.join(`, `)}</Technologies>
     </JobMeta>
     <Highlights>
-      {highlights.map((highlight, i) => (
-        <Highlight key={i}>
+      {highlights.map((highlight) => (
+        <Highlight key={highlight}>
           <Markdown markdown={highlight} components={{ a: Link }} />
         </Highlight>
       ))}

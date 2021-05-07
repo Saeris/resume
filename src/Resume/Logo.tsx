@@ -1,7 +1,8 @@
+import type { FunctionComponent, JSX } from "preact";
 import { h } from "preact";
 import styled from "styled-components";
 
-export interface LogoProps extends React.HTMLAttributes<SVGElement> {
+export interface LogoProps extends JSX.HTMLAttributes<SVGElement> {
   scale?: number;
   width?: number;
   height?: number;
@@ -16,7 +17,7 @@ const Overlay = styled.g`
   }
 `;
 
-export const Logo: React.FC<LogoProps> = ({ scale = 1, width = 32, height = 32 }) => (
+export const Logo: FunctionComponent<LogoProps> = ({ scale = 1, width = 32, height = 32 }) => (
   <svg
     width={scale * width}
     height={scale * height}
@@ -63,7 +64,7 @@ export const Logo: React.FC<LogoProps> = ({ scale = 1, width = 32, height = 32 }
           height="1440"
           xlinkHref="/bg.webp"
           transform="matrix(1.937500e-02 0 0 1.937500e-02 -8.7994 1.8282)"
-        ></image>
+        />
       </g>
       <g clipPath="url(#Clip)" style={{ mixBlendMode: `multiply` }}>
         <linearGradient id="Edge" gradientUnits="userSpaceOnUse" x1="16.0292" y1="29.1818" x2="16.0292" y2="3.8605">
