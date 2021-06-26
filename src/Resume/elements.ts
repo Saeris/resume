@@ -110,7 +110,7 @@ export const Title = styled.h2(
     }
 
     @media print {
-      font-size: 3.55rem;
+      font-size: 3.42rem;
       line-height: 3rem;
     }
   `
@@ -155,7 +155,7 @@ export const Service = styled(Link)<{
       font-size: 0;
 
       &:after {
-        content: '${label}';
+        content: "${label}";
         margin-left: 1ch;
         color: ${theme.colors.secondary};
         font-size: ${theme.sizes.header};

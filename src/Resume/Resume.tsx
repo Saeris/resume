@@ -65,7 +65,7 @@ export const Resume: FunctionComponent = () => {
           <Break />
           <List>
             {data.jobs.map((props) => (
-              <Job key={props.role} {...props} />
+              <Job key={`${props.role}-${String(props.company)}`} {...props} />
             ))}
           </List>
         </Experience>

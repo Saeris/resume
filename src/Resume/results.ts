@@ -22,7 +22,7 @@ export interface Results {
 export const results: { data: Results } = {
   data: {
     fullName: `Drake Costa`,
-    title: `Full-Stack JavaScript Engineer`,
+    title: `Developer Experience Engineer`,
     contacts: [
       { label: `Email`, to: `drake@saeris.io` },
       { label: `LinkedIn`, to: `https://www.linkedin.com/in/saeris` },
@@ -194,8 +194,8 @@ export const results: { data: Results } = {
       {
         name: `Mini Movie DB API`,
         description: `GraphQL wrapper for the TheMovieDB API`,
-        website: `https://mini-movie-db-api.saeris.io`,
-        repository: `https://github.com/Saeris/mini-movie-db-api`,
+        website: `https://tmdb-api.saeris.io`,
+        repository: `https://github.com/Saeris/tmdb-api`,
         technologies: [
           `Apollo Server`,
           `GraphQL`,

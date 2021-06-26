@@ -80,6 +80,7 @@ export interface Theme {
   };
 }
 
+// @ts-expect-error
 export const theme: Theme = Object.defineProperties(
   {
     fonts: {
@@ -87,7 +88,7 @@ export const theme: Theme = Object.defineProperties(
       body: `'Titillium Web', '-apple-system', 'Roboto', 'Helvetica', 'Arial', sans-serif`
     },
     sizes: {
-      title: `3.8rem`,
+      title: `3.95rem`,
       subtitle: `2.6rem`,
       header: `2.1rem`,
       label: `1.8rem`,
@@ -123,7 +124,9 @@ export const theme: Theme = Object.defineProperties(
           if (upperBound.max === Infinity && lowerBound.min) {
             return `@media (min-width: ${lowerBound.min}}px)`;
           }
-          return `@media (min-width: ${lowerBound.min ? lowerBound.min : 0}px) and (max-width: ${upperBound.max ? upperBound.max : Infinity}px)`;
+          return `@media (min-width: ${lowerBound.min ? lowerBound.min : 0}px) and (max-width: ${
+            upperBound.max ? upperBound.max : Infinity
+          }px)`;
         },
 
         greaterThan(size) {
