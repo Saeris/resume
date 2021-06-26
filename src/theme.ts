@@ -80,7 +80,6 @@ export interface Theme {
   };
 }
 
-// @ts-expect-error
 export const theme: Theme = Object.defineProperties(
   {
     fonts: {
