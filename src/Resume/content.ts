@@ -6,7 +6,7 @@ export interface Results {
   skills: string[];
   jobs: {
     role: string;
-    type: string;
+    type: "Full-Time" | "Contract" | "Freelance";
     company: string | null;
     print: boolean;
     timeframe: string;
@@ -52,11 +52,22 @@ export const results: { data: Results } = {
     ],
     jobs: [
       {
+        role: `Senior Software Engineer`,
+        type: `Full-Time`,
+        company: `One Finance`,
+        print: false,
+        timeframe: `8/21 - 10/21`,
+        location: `Remote`,
+        industry: `Mobile Banking`,
+        technologies: [`Nodejs`, `React`, `Typescript`, `Styled-Components`, `ESLint`],
+        highlights: []
+      },
+      {
         role: `Software Engineer II @ Nike`,
         type: `Contract`,
         company: `VanderHouwen`,
         print: true,
-        timeframe: `10/20 - Present`,
+        timeframe: `10/20 - 7/21`,
         location: `Remote`,
         industry: `Online Retail`,
         technologies: [
@@ -113,9 +124,7 @@ export const results: { data: Results } = {
         location: `Portland, OR`,
         industry: `eCommerce SaaS`,
         technologies: [`Aurelia`, `Redux`, `GraphQL`],
-        highlights: [
-          `Developed a prototype application using the Aurelia Framework. Implemented a CI/CD pipeline deploying to Microsoft Azure and collaborated with the CTO on API design.`
-        ]
+        highlights: []
       },
       {
         role: `Developer III`,
@@ -128,7 +137,7 @@ export const results: { data: Results } = {
         technologies: [`Aurelia`, `Sass`, `Apache Velocity`, `Liferay`],
         highlights: [
           `Responsible for front-end development of various UI components for [Regence Blue-Cross](https://www.regence.com/web/regence_individual/) and [Asuris Health](https://www.asuris.com/) at Cambia Health Solutions`,
-          `Overhauled Node.js / Grunt build process and project organization, optimizing Node package usage (from 6+ Gb down to ~250 Mb) and reducing automated build times in Jenkins (from over 1 hour down to ~15 minutes), enabling faster iteration and higher productivity`,
+          `Overhauled build process and project organization, optimizing package usage (from 6+ Gb down to ~250 Mb) reducing build times in Jenkins from over 1 hour down to ~15 minutes.`,
           `Mentored junior engineers in the use of Aurelia, component-based architectures, CSS Flexbox, and JavaScript best-practices`
         ]
       },

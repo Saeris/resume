@@ -1,8 +1,9 @@
 import type { FunctionComponent } from "preact";
 import { h } from "preact";
-import { Markdown } from "./Markdown";
-import { Link } from "./Link";
-import type { Results } from "./results";
+import { Markdown } from "../Markdown";
+import { Link } from "../Link";
+import type { Results } from "../content";
+import { Technologies, Location } from "../elements";
 import {
   Job as Container,
   JobOverview,
@@ -13,9 +14,7 @@ import {
   JobMeta,
   Industry,
   Highlights,
-  Highlight,
-  Location,
-  Technologies
+  Highlight
 } from "./elements";
 
 export const Job: FunctionComponent<Results["jobs"][0]> = ({
@@ -31,8 +30,8 @@ export const Job: FunctionComponent<Results["jobs"][0]> = ({
 }) => (
   <Container print={print}>
     <JobOverview>
-      <Role>{role}</Role>
-      {company && <Company>{company}</Company>}
+      <Role showDivider={Boolean(company)}>{role}</Role>
+      {company ? <Company>{company}</Company> : null}
       <Type>{type}</Type>
       <Timeframe>{timeframe}</Timeframe>
       <Location>{location}</Location>
@@ -41,12 +40,14 @@ export const Job: FunctionComponent<Results["jobs"][0]> = ({
       <Industry>{industry}</Industry>
       <Technologies>{technologies.join(`, `)}</Technologies>
     </JobMeta>
-    <Highlights>
-      {highlights.map((highlight) => (
-        <Highlight key={highlight}>
-          <Markdown markdown={highlight} components={{ a: Link }} />
-        </Highlight>
-      ))}
-    </Highlights>
+    {highlights.length > 0 ? (
+      <Highlights>
+        {highlights.map((highlight) => (
+          <Highlight key={highlight}>
+            <Markdown markdown={highlight} components={{ a: Link }} />
+          </Highlight>
+        ))}
+      </Highlights>
+    ) : null}
   </Container>
 );

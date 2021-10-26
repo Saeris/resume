@@ -190,6 +190,7 @@ export const GlobalStyles = createGlobalStyle(
         --sizes-label: 10pt;
         --sizes-body: 9pt;
         --sizes-small: 8pt;
+        --sizes-tiny: 6pt;
       }
     }
   `

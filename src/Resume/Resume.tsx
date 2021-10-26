@@ -5,7 +5,7 @@ import { Logo } from "./Logo";
 import { Job } from "./Job";
 import { Project } from "./Project";
 import { School } from "./School";
-import { results } from "./results";
+import { results } from "./content";
 import {
   Main,
   Navigation,

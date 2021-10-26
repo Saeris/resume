@@ -1,7 +1,8 @@
 import type { FunctionComponent } from "preact";
 import { h } from "preact";
-import type { Results } from "./results";
-import { Project as Container, Name, Description, Website, Repository, Technologies } from "./elements";
+import type { Results } from "../content";
+import { Name, Description, Technologies } from "../elements";
+import { Project as Container, Website, Repository } from "./elements";
 
 export const Project: FunctionComponent<Results["projects"][0]> = ({
   name,
