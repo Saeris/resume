@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/saeris/resume-2020.git"
+    "url": "https://github.com/saeris/resume.git"
   },
   "scripts": {
     "dev": "next dev",
