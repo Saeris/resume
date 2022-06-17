@@ -59,8 +59,11 @@ types/
 .env
 .env.*
 
+.next/
 .cache/
-public
+**/public/workbox-*.js*
+**/public/sw.js*
+**/public/worker-*.js*
 results
 yarn-error.log
 .idea
@@ -70,12 +73,4 @@ schema.json
 cypress/e2e/build
 
 .DS_Store
-
-# Build Output
-build/
-
-# Local Netlify folder
-.netlify
-
-# Netlify Functions Build Folder
-/lambda/
+.vercel

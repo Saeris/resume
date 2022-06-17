@@ -6,33 +6,21 @@ const { name } = require(`./package.json`);
  */
 module.exports = {
   displayName: name,
-  testRunner: "jest-circus/runner",
-  coverageDirectory: `<rootDir>/.coverage/`,
+  coverageDirectory: `./coverage/`,
   collectCoverage: true,
   collectCoverageFrom: [
     // include
-    "<rootDir>/src/**/*.{ts,tsx,js,jsx}",
+    `./src/**/*.ts`,
+    `./server/**/*.ts`,
     // exclude
-    "!**/*.spec.ts",
-    `!**/__fixtures__/**/*`,
     `!**/__mocks__/**/*`,
-    `!**/__stories__/**/*`,
-    `!**/__tests__/**/*`,
-    `!**/node_modules/**`
+    `!**/__test__/**/*`,
+    `!**/node_modules/**`,
+    `!**/vendor/**`
   ],
-  passWithNoTests: true,
+  transform: {
+    "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }]
+  },
   testEnvironment: `node`,
-  verbose: true,
-  testURL: "http://localhost:8080",
-  moduleNameMapper: {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/src/tests/__mocks__/fileMock.js",
-    "\\.(css|less|scss)$": "identity-obj-proxy",
-    "^./style$": "identity-obj-proxy",
-    "^preact$": "<rootDir>/node_modules/preact/dist/preact.min.js",
-    "^react$": "preact-compat",
-    "^react-dom$": "preact-compat",
-    "^create-react-class$": "preact-compat/lib/create-react-class",
-    "^react-addons-css-transition-group$": "preact-css-transition-group"
-  }
+  verbose: true
 };

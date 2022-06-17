@@ -1,9 +1,14 @@
-require(`@saeris/eslint-config/patch`);
-
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 module.exports = {
-  extends: [require.resolve("@saeris/eslint-config")],
-  ignorePatterns: ["*.js", "build/*"],
+  extends: ["@saeris/eslint-config"],
   rules: {
-    "multiline-ternary": "off"
-  }
+    "import/no-named-as-default": `off`,
+    "import/no-cycle": `off`,
+    "import/no-unused-modules": `off`,
+    "import/no-deprecated": `off`,
+    "multiline-ternary": `off`
+  },
+  ignorePatterns: [`*.js`]
 };

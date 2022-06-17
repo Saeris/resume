@@ -1,19 +1,27 @@
-# resume-2020
+# Personal Resume
 
-## CLI Commands
+## Quickstart
 
-- `npm install`: Installs dependencies
+Install Dependencies
 
-- `npm run start`: Runs `serve` or `dev`, depending on `NODE_ENV` value. Defaults to `dev server`
+```bash
+yarn
+```
 
-- `npm run dev`: Run a development, HMR server
+Run a Dev Server
 
-- `npm run serve`: Run a production-like server
+```bash
+yarn dev
+```
 
-- `npm run build`: Production-ready build
+Generate Production Build
 
-- `npm run lint`: Pass TypeScript files using TSLint
+```bash
+yarn build
+```
 
-- `npm run test`: Run Jest and [`preact-render-spy`](https://github.com/mzgoddard/preact-render-spy) for your tests
+Test/Lint/Typecheck
 
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
+```bash
+yarn test
+```
