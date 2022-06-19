@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { NextPage } from "next";
 import { Icons } from "./Icons";
 import { Logo } from "./Logo";
 import { Job } from "./Job";
 import { Project } from "./Project";
 import { School } from "./School";
-import { results } from "../../content";
+import type { ResumeProps } from "./getStaticProps";
 import {
   Main,
   Navigation,
@@ -31,11 +31,7 @@ import {
   Note
 } from "./elements";
 
-export const getStaticProps: GetStaticProps<{ data: typeof results["data"] }> = () => ({
-  props: results
-});
-
-export const Resume: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ data }) => (
+export const Resume: NextPage<ResumeProps> = ({ data }) => (
   <Main>
     <Navigation>
       <Fullname>{data.fullName}</Fullname>
