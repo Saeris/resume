@@ -11,7 +11,7 @@ const meta = {
   url: `https://saeris.io`,
   twitter: `@saeris`,
   favicon: `/favicon.ico`,
-  image: `/share-card.png`,
+  image: `/share-card.webp`,
   manifest: `/manifest.json`,
   color: `#127cbb`
 };
