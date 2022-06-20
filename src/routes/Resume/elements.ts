@@ -178,17 +178,17 @@ export const Content = styled.article(
       "experience"
       "projects"
       "education";
-    grid-row-gap: ${theme.sizes.tiny};
+    grid-row-gap: ${theme.sizes.small};
     grid-column-gap: 2ch;
     width: 100%;
 
     @media print {
       grid-template:
-        "summary summary"
         "projects expertise"
         "projects experience"
         "education experience" / 30% minmax(0, 70%);
     }
+    grid-row-gap: ${theme.sizes.tiny};
   `
 );
 

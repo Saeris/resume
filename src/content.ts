@@ -38,17 +38,26 @@ export const results: { data: Results } = {
     ],
     summary: `Self-taught software engineer with a background in graphic design and game development. Enthusiastic about developer experience, tooling, and web accessibility. Avid photographer and competitive online gamer. Highly values learning and bringing people together.`,
     skills: [
+      // Languages
       `Typescript`,
       `JavaScript`,
-      `HTML / CSS`,
-      `GraphQL`,
+      `HTML + CSS`,
       `Nodejs`,
-      `React`,
+      `GraphQL`,
+      `PostgreSQL`,
+      // Libraries
       `Nextjs`,
-      `Apollo`,
-      `Jest`,
+      `React`,
       `Styled-Components`,
-      `Webpack / Babel`,
+      `React-Query`,
+      `Ariakit`,
+      `Apollo`,
+      // Tools
+      `Prisma`,
+      `Jest`,
+      `Webpack + Babel`,
+      `Storybook`,
+      `GitHub Actions`,
       `Figma`
     ],
     jobs: [
@@ -63,8 +72,8 @@ export const results: { data: Results } = {
         technologies: [`Nextjs`, `React`, `Typescript`, `Nodejs`, `Wordpress`, `MySQL`],
         highlights: [
           `Leading technical effort to modernize FanimeCon's website and content publishing pipeline by leveraging Nextjs, Markdown and GitHub.`,
-          `Authored documentation targeting a non-technical audience of volunteers to perform tasks such as publishing and site maintenance.`,
-          `Collaborated with other teams to edit, format and publish site content within strict deadlines.`
+          `Authoring documentation targeting a non-technical audience of volunteers to perform tasks such as publishing and site maintenance.`,
+          `Collaborating with other teams to edit, format and publish site content within strict deadlines.`
         ]
       },
       {
@@ -121,7 +130,7 @@ export const results: { data: Results } = {
         highlights: [
           `Responsible for front-end work on [Custom Templates](https://codesandbox.io/post/Templates), enabling users to [build and share](https://codesandbox.io/post/hello-template-universe-goodbye-project-setup) their own reusable starter projects.`,
           `Built a 'crash handler' page, prototyped within CodeSandbox, providing users with a [tool to file crash reports](https://codesandbox.io/post/CodeSadbox) with pre-filled details. The dog-fooding process used to develop this feature is now used internally to quickly iterate on new UI features.`,
-          `Established coding style guidelines and implemented them alongside a refactor of dozens of components to React Hooks / TypeScript. Would later oversee a call for open-source contributions through [Hacktoberfest](https://github.com/codesandbox/codesandbox-client/issues/2621), resulting in [60+ submissions](https://github.com/codesandbox/codesandbox-client/issues?q=label%3A%22Hacktoberfest%22+-label%3A%22%F0%9F%96%A8+Duplicate%22+is%3Aclosed+) from multiple contributors.`
+          `Established coding style guidelines and implemented them alongside a refactor of dozens of components to React Hooks / TypeScript.`
         ]
       },
       {
@@ -154,7 +163,7 @@ export const results: { data: Results } = {
         timeframe: `08/15 - 02/16`,
         location: `Beaverton, OR`,
         industry: `Software Engineering Services`,
-        technologies: [`Aurelia`, `Sass`, `Apache Velocity`, `Liferay`],
+        technologies: [`JavaScript`, `Aurelia`, `Scss`, `Apache Velocity`, `Liferay`],
         highlights: [
           `Responsible for front-end development of various UI components for [Regence Blue-Cross](https://www.regence.com/web/regence_individual/) and [Asuris Health](https://www.asuris.com/) at Cambia Health Solutions`,
           `Overhauled build process and project organization, optimizing package usage (from 6+ Gb down to ~250 Mb) reducing build times in Jenkins from over 1 hour down to ~15 minutes.`,
@@ -179,19 +188,19 @@ export const results: { data: Results } = {
     ],
     projects: [
       {
-        name: `Worbik`,
-        description: `Word Puzzle Mini-Game`,
-        website: `https://worbik.saeris.io`,
-        repository: null,
-        technologies: [`Nextjs`, `React`, `Ariakit`, `Typescript`],
-        print: true
-      },
-      {
         name: `Apollo Server Vercel`,
         description: `Apollo Server integration for Vercel`,
         website: `https://apollo-server-vercel.saeris.io`,
         repository: `https://github.com/Saeris/apollo-server-vercel`,
         technologies: [`Apollo Server`, `GraphQL`, `Typescript`, `Nextjs`, `Jest`],
+        print: true
+      },
+      {
+        name: `Worbik`,
+        description: `Daily Word Puzzle Mini-Game`,
+        website: `https://worbik.saeris.io`,
+        repository: null,
+        technologies: [`Nextjs`, `React`, `Ariakit`, `Typescript`],
         print: true
       },
       {
