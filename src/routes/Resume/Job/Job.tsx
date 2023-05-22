@@ -33,10 +33,8 @@ export const Job: React.FC<Results["jobs"][0]> = ({
       {company ? <Company>{company}</Company> : null}
       <Type>{type}</Type>
       <Timeframe>{timeframe}</Timeframe>
-      <Location>{location}</Location>
     </JobOverview>
     <JobMeta>
-      {industry ? <Industry>{industry}</Industry> : null}
       <Technologies>{technologies.join(`, `)}</Technologies>
     </JobMeta>
     {highlights.length > 0 ? (

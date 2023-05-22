@@ -23,7 +23,7 @@ export interface Results {
     technologies: string[];
     print: boolean;
   }[];
-  schools: { name: string; description: string; graduated: string; location: string }[];
+  schools: { name: string; description: string; graduated: string | null; location: string }[];
 }
 
 export const results: { data: Results } = {
@@ -32,9 +32,9 @@ export const results: { data: Results } = {
     title: `Full-Stack Typescript Engineer`,
     contacts: [
       { label: `Email`, to: `drake@saeris.io` },
-      { label: `LinkedIn`, to: `https://www.linkedin.com/in/saeris` },
+      { label: `GitHub`, to: `https://www.github.com/saeris` },
       { label: `Twitter`, to: `https://www.twitter.com/saeris` },
-      { label: `GitHub`, to: `https://www.github.com/saeris` }
+      { label: `LinkedIn`, to: `https://www.linkedin.com/in/saeris` }
     ],
     summary: `Self-taught software engineer with a background in graphic design and game development. Enthusiastic about developer experience, tooling, and web accessibility. Avid photographer and competitive online gamer. Highly values learning and bringing people together.`,
     skills: [
@@ -62,18 +62,41 @@ export const results: { data: Results } = {
     ],
     jobs: [
       {
+        role: `Senior Engineer I`,
+        type: `Full-Time`,
+        company: `M1 Finance`,
+        print: true,
+        timeframe: `8/22 - Present`,
+        location: `Remote`,
+        industry: `Financial Services`,
+        technologies: [`React`, `Typescript`, `GraphQL`, `Ariakit`, `Styled-Components`, `Storybook`, `Figma`],
+        highlights: [
+          `Shipped a multi-phase design system foundations project in under four months for our Web, iOS and Android platforms as part of a cross-functional team of designer and engineers.`,
+
+          `Developed a scalable design token theming solution with code examples and documentation to support migration of our legacy web application.`,
+
+          `Collaborated with design team to migrate over 450 icons and illustrations to SVG, reducing web application bundle size by 1125%.`,
+
+          `Guided discussions on accessibility, design tokens, and design documentation as part of a weekly cross-functional design system committee.`,
+
+          `Mentored peers in WAI-ARIA accessible user interface patterns such as keyboard interactions, tab focus management, and aria attributes.`,
+
+          `Built internal tools including interactive code-snippet sticker sheets in Storybook, a modern GraphQL IDE with custom authentication support, and image asset optimzation scripts.`
+        ]
+      },
+      {
         role: `Web Team Lead`,
         type: `Volunteer`,
         company: `FanimeCon`,
-        print: true,
-        timeframe: `5/21 - Present`,
+        print: false,
+        timeframe: `5/21 - 10/22`,
         location: `Remote`,
         industry: `Pop Culture Convention`,
         technologies: [`Nextjs`, `React`, `Typescript`, `Nodejs`, `Wordpress`, `MySQL`],
         highlights: [
-          `Leading technical effort to modernize FanimeCon's website and content publishing pipeline by leveraging Nextjs, Markdown and GitHub.`,
-          `Authoring documentation targeting a non-technical audience of volunteers to perform tasks such as publishing and site maintenance.`,
-          `Collaborating with other teams to edit, format and publish site content within strict deadlines.`
+          `Prototyped a content publishing pipeline leveraging Nextjs, Markdown and GitHub.`,
+          `Authored documentation targeting a non-technical audience of volunteers to perform tasks such as publishing and site maintenance.`,
+          `Collaborated with other teams to edit, format and publish site content within strict deadlines.`
         ]
       },
       {
@@ -92,13 +115,13 @@ export const results: { data: Results } = {
         ]
       },
       {
-        role: `Software Engineer II @ Nike`,
+        role: `Software Engineer II`,
         type: `Contract`,
-        company: `VanderHouwen`,
+        company: `VanderHouwen @ Nike`,
         print: true,
         timeframe: `10/20 - 7/21`,
         location: `Remote`,
-        industry: `Online Retail`,
+        industry: `Ecommerce`,
         technologies: [
           `Nodejs`,
           `React`,
@@ -126,7 +149,7 @@ export const results: { data: Results } = {
         timeframe: `05/19 - 03/20`,
         location: `Remote`,
         industry: `Software Development Tools`,
-        technologies: [`React`, `Typescript`, `Styled-Components`, `Reakit`, `Apollo`, `GraphQL`],
+        technologies: [`React`, `Typescript`, `Styled-Components`, `Ariakit`, `Apollo`, `GraphQL`],
         highlights: [
           `Responsible for front-end work on [Custom Templates](https://codesandbox.io/post/Templates), enabling users to [build and share](https://codesandbox.io/post/hello-template-universe-goodbye-project-setup) their own reusable starter projects.`,
           `Built a 'crash handler' page, prototyped within CodeSandbox, providing users with a [tool to file crash reports](https://codesandbox.io/post/CodeSadbox) with pre-filled details. The dog-fooding process used to develop this feature is now used internally to quickly iterate on new UI features.`,
@@ -159,7 +182,7 @@ export const results: { data: Results } = {
         role: `Developer III`,
         type: `Full-Time`,
         company: `Catalyst DevWorks`,
-        print: true,
+        print: false,
         timeframe: `08/15 - 02/16`,
         location: `Beaverton, OR`,
         industry: `Software Engineering Services`,
@@ -188,20 +211,36 @@ export const results: { data: Results } = {
     ],
     projects: [
       {
-        name: `Apollo Server Vercel`,
-        description: `Apollo Server integration for Vercel`,
-        website: `https://apollo-server-vercel.saeris.io`,
-        repository: `https://github.com/Saeris/apollo-server-vercel`,
-        technologies: [`Apollo Server`, `GraphQL`, `Typescript`, `Nextjs`, `Jest`],
-        print: true
-      },
-      {
         name: `Worbik`,
         description: `Daily Word Puzzle Mini-Game`,
         website: `https://worbik.saeris.io`,
         repository: null,
-        technologies: [`Nextjs`, `React`, `Ariakit`, `Typescript`],
+        technologies: [`Nextjs`, `Typescript`, `Vercel Platform`],
         print: true
+      },
+      {
+        name: `saeris.gg`,
+        description: `Personal link-sharing microsite`,
+        website: `https://saeris.gg`,
+        repository: `https://github.com/saeris/saeris.gg`,
+        technologies: [`Nextjs`, `Typescript`, `Three.js`, `CSS Modules`],
+        print: true
+      },
+      {
+        name: `Discordkit`,
+        description: `A Type-Safe REST api Client for Discord`,
+        website: null,
+        repository: `https://github.com/Saeris/discordkit`,
+        technologies: [`Typescript`, `Zod`],
+        print: true
+      },
+      {
+        name: `Apollo Server Vercel`,
+        description: `Apollo Server integration for Vercel`,
+        website: `https://apollo-server-vercel.saeris.io`,
+        repository: `https://github.com/saeris/apollo-server-vercel`,
+        technologies: [`Apollo Server`, `GraphQL`, `Typescript`, `Nextjs`, `Jest`],
+        print: false
       },
       {
         name: `Proxy Tokens`,
@@ -225,7 +264,7 @@ export const results: { data: Results } = {
         website: `https://graphql-scalars.saeris.io`,
         repository: `https://github.com/Saeris/graphql-scalars`,
         technologies: [`TypeScript`, `GraphQL`, `Joi`, `Jest`, `Webpack`],
-        print: true
+        print: false
       },
       {
         name: `GraphQL Directives`,
@@ -233,7 +272,7 @@ export const results: { data: Results } = {
         website: `https://graphql-directives.saeris.io`,
         repository: `https://github.com/Saeris/graphql-directives`,
         technologies: [`Apollo Server`, `TypeScript`, `GraphQL`],
-        print: true
+        print: false
       },
       {
         name: `Scryfall API`,
@@ -277,6 +316,12 @@ export const results: { data: Results } = {
       }
     ],
     schools: [
+      {
+        name: `Renton Technical College`,
+        description: `BAS - Computer Network Engineering`,
+        graduated: null,
+        location: `Renton, WA`
+      },
       {
         name: `Las Positas Community College`,
         description: `AA - Visual Communications`,

@@ -7,7 +7,7 @@ export const School: React.FC<Results["schools"][0]> = ({ name, description, gra
   <Container>
     <Name>{name}</Name>
     <Description>{description}</Description>
-    <Graduated>{graduated}</Graduated>
+    {graduated ? <Graduated>{graduated}</Graduated> : null}
     <Location>{location}</Location>
   </Container>
 );

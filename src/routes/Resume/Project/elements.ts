@@ -32,7 +32,6 @@ const linkText = ({ theme }: { theme: Theme }): FlattenSimpleInterpolation => cs
 
   &:after {
     font-size: ${theme.sizes.body};
-    text-decoration: underline;
     user-select: none;
   }
 `;

@@ -348,8 +348,15 @@ export const Note = styled.aside(
 );
 
 export const Schools = styled.ul(
-  () => css`
+  ({ theme }) => css`
     ${list};
+    display: flex;
+    flex-direction: column;
+    gap: ${theme.sizes.label};
+
+    @media print {
+      gap: ${theme.sizes.tiny};
+    }
   `
 );
 

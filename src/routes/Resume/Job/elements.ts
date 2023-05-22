@@ -21,9 +21,7 @@ export const JobOverview = styled.div(
       max-content
       [timeframe-end type-start]
       max-content
-      [type-end location-start]
-      13ch
-      [location-end];
+      [type-end];
 
     @media screen {
       margin-bottom: 0.4rem;
@@ -39,6 +37,7 @@ export const Company = styled.div(
 
 export const Timeframe = styled.div(
   ({ children = ``, theme }) => css`
+    ${divider()};
     grid-area: timeframe;
     justify-self: flex-end;
     padding-right: 1ch;
@@ -47,15 +46,16 @@ export const Timeframe = styled.div(
     &:after {
       content: "${(children as string).replace(/\//g, `.`)}";
       font-size: ${theme.sizes.body};
+      padding-right: 1ch;
     }
   `
 );
 
 export const Type = styled.div(
   () => css`
-    ${divider()};
     grid-area: type;
     justify-self: flex-end;
+    min-width: 10ch;
   `
 );
 
