@@ -1,11 +1,7 @@
 // @ts-check
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
 
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
+/** @type {import('next').NextConfig} */
+module.exports = {
   compiler: {
     styledComponents: true
   },
@@ -15,12 +11,3 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true
 };
-
-module.exports = withPWA({
-  pwa: {
-    dest: "public",
-    disable: process.env.NODE_ENV !== "production",
-    runtimeCaching
-  },
-  ...nextConfig
-});
