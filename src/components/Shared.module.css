@@ -114,7 +114,7 @@
         font-weight: 300;
         font-size: 15px;
         line-height: 23px;
-        padding-bottom: 5px;
+        padding-bottom: 4px;
         margin: unset;
         border-bottom: 2px solid #d5dce4;
       }
@@ -137,7 +137,7 @@
   gap: 6px;
   padding: unset;
   margin: unset;
-  width: fill-available;
+  width: stretch;
   list-style: none;
 
   li {
@@ -157,63 +157,80 @@
   }
 }
 
-.jobs > ul {
+.jobs > ul:nth-child(2) {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
 
-.jobs li {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  div {
-    display: flex;
-    gap: 4px;
-  }
-
-  div:first-child {
-    justify-content: space-between;
-    align-items: baseline;
-
-    > div {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-
-      &:last-child {
-        justify-content: flex-end;
-      }
-    }
-
-    span {
-      color: #127cbb;
-    }
-
-    h4 {
-      display: inline-flex;
-    }
-  }
-
-  aside {
-    &:before {
-      content: "Technologies: ";
-    }
-    span {
-      color: #127cbb;
-    }
-  }
-
-  ul {
+  li {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding-left: 20px;
-    list-style: square;
 
-    li {
-      display: list-item;
+    div {
+      display: flex;
+      gap: 4px;
+    }
+
+    div:first-child {
+      justify-content: space-between;
+      align-items: baseline;
+
+      > div {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+
+        &:last-child {
+          justify-content: flex-end;
+        }
+      }
+
+      span {
+        color: #127cbb;
+      }
+
+      h4 {
+        display: inline-flex;
+      }
+    }
+
+    aside {
+      &:before {
+        content: "Technologies: ";
+      }
+      span {
+        color: #127cbb;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-left: 20px;
+      list-style: square;
+
+      li {
+        display: list-item;
+      }
+    }
+  }
+}
+
+.jobs > ul:last-child {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    width: stretch;
+
+    div {
+      display: flex;
+      gap: 8px;
     }
   }
 }
@@ -225,6 +242,8 @@
   line-height: 12px;
   text-transform: uppercase;
   color: #127cbb;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #d5dce4;
 }
 
 .projects {

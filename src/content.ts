@@ -36,13 +36,15 @@ export interface Content {
   summary: string;
   skills: [IconType | React.FC, string][];
   jobs: {
+    showcase?: boolean;
     role: string;
     type: "Full-Time" | "Contract" | "Freelance" | "Volunteer";
     company: string | null;
     timeframe: string;
-    technologies: string[];
-    highlights: string[];
+    technologies?: string[];
+    highlights?: string[];
   }[];
+
   projects: {
     name: string;
     description: string;
@@ -98,6 +100,7 @@ export const content: Content = {
   ],
   jobs: [
     {
+      showcase: true,
       role: `Senior Software Engineer I`,
       type: `Full-Time`,
       company: `M1 Finance`,
@@ -126,6 +129,7 @@ export const content: Content = {
       ]
     },
     {
+      showcase: true,
       role: `Software Engineer II`,
       type: `Contract`,
       company: `VanderHouwen on assignment at Nike`,
@@ -149,6 +153,7 @@ export const content: Content = {
       ]
     },
     {
+      showcase: true,
       role: `Front-End Engineer`,
       type: `Contract`,
       company: `CodeSandbox`,
@@ -166,6 +171,48 @@ export const content: Content = {
         `Established internal dogfooding process for using the product to prototype and build new features, such as a crash handler page which streamlined user's ability to file bug reports.`,
         `Documented coding style guidelines and refactored legacy components to adhere to industry standard best practices.`
       ]
+    },
+    {
+      showcase: false,
+      role: `Web Team Lead`,
+      type: `Volunteer`,
+      company: `FanimeCon`,
+      timeframe: `05.21 - 10.22`
+    },
+    {
+      showcase: false,
+      role: `Senior Engineer`,
+      type: `Full-Time`,
+      company: `One Finance`,
+      timeframe: `08.21 - 10.21`
+    },
+    {
+      showcase: false,
+      role: `Full-Stack Engineer`,
+      type: `Freelance`,
+      company: `Self-Employed`,
+      timeframe: `01.17 - 5.19`
+    },
+    {
+      showcase: false,
+      role: `Web Application Developer`,
+      type: `Full-Time`,
+      company: `4-Tell`,
+      timeframe: `10.16 - 12.16`
+    },
+    {
+      showcase: false,
+      role: `Developer III`,
+      type: `Full-Time`,
+      company: `Catalyst DevWorks`,
+      timeframe: `8.16 - 2.17`
+    },
+    {
+      showcase: false,
+      role: `Front-End Developer`,
+      type: `Contract`,
+      company: `Sellpoints`,
+      timeframe: `12.14 - 5.15`
     }
   ],
   projects: [

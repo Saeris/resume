@@ -14,7 +14,7 @@ const Resume: NextPage = () => (
       </div>
       <address>
         {content.contacts.map(({ label, to }) => (
-          <Link key={label} to={to}>
+          <Link key={to} to={to}>
             {Icons[label]} {to.replace(`https://www.`, ``)}
           </Link>
         ))}
@@ -38,7 +38,7 @@ const Resume: NextPage = () => (
           <ul>
             {content.projects.map(
               ({ name, description, website, repository, technologies }) => (
-                <li>
+                <li key={name}>
                   <h4>{name}</h4>
                   <p>{description}</p>
                   <aside>{technologies.join(`, `)}</aside>
@@ -60,7 +60,7 @@ const Resume: NextPage = () => (
           <ul>
             {content.schools.map(
               ({ name, description, graduated, location }) => (
-                <li>
+                <li key={name}>
                   <h4>{name}</h4>
                   <p>{description}</p>
                   <aside>
@@ -81,47 +81,62 @@ const Resume: NextPage = () => (
         <section className={styles.jobs}>
           <h3>Experience:</h3>
           <ul>
-            {content.jobs.map(
-              ({
-                role,
-                company,
-                type,
-                timeframe,
-                technologies,
-                highlights
-              }) => (
-                <li>
-                  <div>
+            {content.jobs
+              .filter(({ showcase }) => showcase)
+              .map(
+                ({
+                  role,
+                  company,
+                  type,
+                  timeframe,
+                  technologies,
+                  highlights
+                }) => (
+                  <li key={company}>
                     <div>
-                      <h4>{role}</h4>
-                      {company && <span>{company}</span>}
+                      <div>
+                        <h4>{role}</h4>
+                        {company && <span>{company}</span>}
+                      </div>
+                      <div>
+                        <span>{type}</span>
+                        <span
+                          style={{
+                            "--content": `"${timeframe.replace(/\//g, `.`)}"`
+                          }}
+                        >
+                          {timeframe}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <span>{type}</span>
-                      <span
-                        style={{
-                          "--content": `"${timeframe.replace(/\//g, `.`)}"`
-                        }}
-                      >
-                        {timeframe}
-                      </span>
-                    </div>
-                  </div>
-                  <aside>
-                    <span>{technologies.join(`, `)}</span>
-                  </aside>
-                  {highlights.length > 0 ? (
-                    <ul>
-                      {highlights.map((highlight) => (
-                        <li key={highlight}>{highlight}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </li>
-              )
-            )}
+                    <aside>
+                      <span>{technologies?.join(`, `)}</span>
+                    </aside>
+                    {Array.isArray(highlights) && highlights.length > 0 ? (
+                      <ul>
+                        {highlights.map((highlight) => (
+                          <li key={highlight}>{highlight}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </li>
+                )
+              )}
           </ul>
-          <aside>Additional Experience Available Upon Request</aside>
+          <aside>Additional Experience</aside>
+          <ul>
+            {content.jobs
+              .filter(({ showcase }) => !showcase)
+              .map(({ role, company, timeframe }) => (
+                <li key={company}>
+                  <div>
+                    <h4>{role}</h4>
+                    {company}
+                  </div>
+                  {timeframe}
+                </li>
+              ))}
+          </ul>
         </section>
       </article>
     </main>
