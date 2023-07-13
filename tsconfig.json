@@ -3,17 +3,11 @@
   "ts-node": {
     "transpileOnly": true
   },
-  "include": ["./src/**/*", ".contentlayer/generated"],
+  "include": [".next/types/**/*.ts", "./src/**/*"],
   "exclude": ["node_modules", "**/__mocks__/**/*", "**/__test__/**/*", "**/*.spec.ts"],
   "compilerOptions": {
-    "outDir": "dist",
     "noEmit": true,
     "isolatedModules": true,
-    /* Import Path Aliases */
-    "baseUrl": ".",
-    "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"]
-    },
     // Always include these settings
     "declarationMap": true,
     "sourceMap": true,
@@ -44,6 +38,11 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "incremental": true,
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   }
 }

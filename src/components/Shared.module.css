@@ -1,0 +1,294 @@
+.print {
+  @media print {
+    display: var(--print, none);
+  }
+}
+
+.gradient {
+  @media screen {
+    background: linear-gradient(
+      300deg,
+      var(--colors-primary) 0%,
+      var(--colors-secondary) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  > div,
+  > address {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  /* Name and Title */
+  > div {
+    gap: 12px;
+
+    h1 {
+      margin: unset;
+      font-family: var(--fonts-title);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 52px;
+      line-height: 50px;
+      text-align: center;
+      text-transform: uppercase;
+      text-edge: cap;
+      leading-trim: both;
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      margin: unset;
+      color: var(--colors-secondary);
+      font-style: normal;
+      font-weight: 300;
+      font-size: 34.75px;
+      line-height: 30px;
+      text-align: center;
+      text-edge: cap;
+      leading-trim: both;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  /* Social Media Links */
+  > address {
+    gap: 4px;
+    padding: 8px 0px;
+    margin: unset;
+    list-style: none;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      color: var(--colors-primary);
+      font-style: normal;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 23px;
+      text-edge: cap;
+      text-decoration: none;
+      leading-trim: both;
+
+      svg {
+        width: 16x;
+        height: 16px;
+        font-size: var(--sizes-header);
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+
+  > aside,
+  > article {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    > section {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+
+      h3 {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 23px;
+        padding-bottom: 4px;
+        margin: unset;
+        border-bottom: 2px solid #d5dce4;
+      }
+
+      > h4 {
+        display: inline-flex;
+        color: #4b54a0;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+.skills ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: unset;
+  margin: unset;
+  width: stretch;
+  list-style: none;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: max-content;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    span {
+      color: #127cbb;
+    }
+  }
+}
+
+.jobs > ul:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    div {
+      display: flex;
+      gap: 4px;
+    }
+
+    div:first-child {
+      justify-content: space-between;
+      align-items: baseline;
+
+      > div {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+
+        &:last-child {
+          justify-content: flex-end;
+        }
+      }
+
+      span {
+        color: #127cbb;
+      }
+
+      h4 {
+        display: inline-flex;
+      }
+    }
+
+    aside {
+      &:before {
+        content: "Technologies: ";
+      }
+      span {
+        color: #127cbb;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-left: 20px;
+      list-style: square;
+
+      li {
+        display: list-item;
+      }
+    }
+  }
+}
+
+.jobs > ul:last-child {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    width: stretch;
+
+    div {
+      display: flex;
+      gap: 8px;
+    }
+  }
+}
+
+.jobs > aside {
+  display: flex;
+  justify-content: center;
+  font-size: 8px;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: #127cbb;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #d5dce4;
+}
+
+.projects {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  p {
+    color: #127cbb;
+  }
+
+  a {
+    display: block;
+  }
+}
+
+.education {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  p,
+  span {
+    color: #127cbb;
+  }
+
+  aside {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  margin-top: 1rem;
+
+  @media print {
+    display: none;
+  }
+}

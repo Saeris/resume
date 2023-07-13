@@ -1,0 +1,38 @@
+:root {
+  --colors-primary: #127cbb;
+  --colors-secondary: #4b54a0;
+  --colors-accent: #d5dce4;
+  --colors-text: #33568b;
+  --colors-white: #fff;
+  --colors-black: #000;
+
+  --fonts-title: var(--font-orbitron), "-apple-system", "Roboto", "Helvetica", "Arial", sans-serif;
+  --fonts-body: var(--font-titillium), "-apple-system", "Roboto", "Helvetica", "Arial", sans-serif;
+
+  --sizes-title: 3.95rem;
+  --sizes-subtitle: 2.65rem;
+  --sizes-header: 2.1rem;
+  --sizes-label: 1.8rem;
+  --sizes-body: 1.6rem;
+  --sizes-small: 1.4rem;
+  --sizes-tiny: 1.2rem;
+
+  @media print {
+    --sizes-title: 26pt;
+    --sizes-subtitle: 18pt;
+    --sizes-header: 11pt;
+    --sizes-label: 10pt;
+    --sizes-body: 9pt;
+    --sizes-small: 8pt;
+    --sizes-tiny: 6pt;
+  }
+
+  --weights-extrabold: 800;
+  --weights-bold: 700;
+  --weights-semibold: 600;
+  --weights-medium: 500;
+  --weights-regular: 400;
+  --weights-light: 300;
+  --weights-extralight: 200;
+  --weights-thin: 100;
+}

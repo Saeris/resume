@@ -1,0 +1,3 @@
+# Don't diff large binary files
+/.yarn/releases/** binary
+/.yarn/plugins/** binary
