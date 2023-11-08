@@ -45,7 +45,7 @@ const Resume: React.FC = () => (
       </section>
 
       <section className={styles.skills}>
-        <h3>Skills:</h3>
+        <h3>Skills</h3>
         <ul>
           {content.skills.map(([Icon, skill]) => (
             <li key={skill}>
@@ -57,7 +57,7 @@ const Resume: React.FC = () => (
       </section>
 
       <section className={styles.jobs}>
-        <h3>Relevant Experience:</h3>
+        <h3>Experience</h3>
         <ul>
           {content.jobs.map(({ role, company, timeframe, highlights }) => (
             <li key={company}>
@@ -92,7 +92,7 @@ const Resume: React.FC = () => (
       </section>
 
       <section className={styles.projects}>
-        <h3>Projects:</h3>
+        <h3>Projects</h3>
         <ul>
           {content.projects.map(({ name, description, Icon, link }) => (
             <li key={name}>
@@ -112,7 +112,7 @@ const Resume: React.FC = () => (
       </section>
 
       <section className={styles.education}>
-        <h3>Education:</h3>
+        <h3>Education</h3>
         <ul>
           {content.schools.map(({ name, degree }) => (
             <li key={name}>

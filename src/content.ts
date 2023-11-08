@@ -4,32 +4,18 @@ import {
   SiLinkedin,
   SiGithub,
   SiApollographql,
-  SiBabel,
-  SiTestinglibrary,
-  SiCss3,
-  SiEslint,
   SiFigma,
-  SiVitest,
-  SiGithubactions,
-  SiGit,
-  SiJira,
   SiGraphql,
-  SiHtml5,
   SiTrpc,
   SiJest,
   SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
-  SiPlaywright,
   SiReact,
-  SiReactquery,
   SiRedux,
   SiRollupdotjs,
   SiStorybook,
   SiStyledcomponents,
-  SiEsbuild,
-  SiVite,
-  SiTurborepo,
   SiTypescript,
   SiWebpack
 } from "react-icons/si";
@@ -51,7 +37,7 @@ export interface Content {
 
   projects: Array<{
     name: string;
-    Icon: IconType,
+    Icon: IconType;
     link: string;
     description: string;
   }>;
@@ -78,30 +64,16 @@ export const content: Content = {
     [SiReact, `React`],
     [SiRedux, `Redux`],
     [SiApollographql, `Apollo`],
-    [SiReactquery, `React-Query`],
     [SiGraphql, `GraphQL`],
-    [SiTrpc, `tRPC`],
-    [SiStyledcomponents, `Styled-Components`],
-    [SiHtml5, `HTML`],
-    [SiCss3, `CSS`],
     [SiPostgresql, `PostgreSQL`],
+    [SiTrpc, `tRPC`],
     [SiNodedotjs, `Node.js`],
+    [SiStyledcomponents, `Styled-Components`],
     [SiJest, `Jest`],
-    [SiVitest, `Vitest`],
-    [SiTestinglibrary, `Testing Library`],
-    [SiPlaywright, `Playwright`],
-    [SiStorybook, `Storybook`],
-    [SiFigma, `Figma`],
-    [SiBabel, `Babel`],
     [SiWebpack, `Webpack`],
     [SiRollupdotjs, `Rollup`],
-    [SiEsbuild, `ESBuild`],
-    [SiVite, `Vite`],
-    [SiEslint, `ESLint`],
-    [SiTurborepo, `Turborepo`],
-    [SiGithubactions, `GitHub Actions`],
-    [SiGit, `Git`],
-    [SiJira, `Jira`]
+    [SiStorybook, `Storybook`],
+    [SiFigma, `Figma`]
   ],
   jobs: [
     {

@@ -149,12 +149,16 @@
 .skills ul {
   display: flex;
   flex-wrap: wrap;
-  grid-template-columns: 1fr 1fr;
+  justify-content: center;
   gap: var(--spacing-2) var(--spacing-3);
   padding: unset;
   margin: unset;
   width: 100%;
   list-style: none;
+
+  @media print {
+    justify-content: space-evenly;
+  }
 
   li {
     display: inline-flex;
@@ -164,7 +168,7 @@
     font-weight: 400;
 
     svg {
-      align-self: center;
+      align-self: normal;
       width: var(--spacing-4);
       height: var(--spacing-4);
       color: var(--icon);
@@ -173,6 +177,7 @@
 
   @media only screen and (max-width: 700px) and (orientation: portrait) {
     gap: var(--spacing-2);
+    justify-content: space-evenly;
   }
 }
 
