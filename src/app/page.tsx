@@ -1,150 +1,137 @@
-/* eslint-disable multiline-ternary */
 import React from "react";
-import type { NextPage } from "next";
-import { Icons, Logo, Link } from "../components";
+import {
+  GoCalendar,
+  GoClock,
+  GoLocation,
+  GoMortarBoard,
+  GoOrganization
+} from "react-icons/go";
+import { Link } from "../components";
 import { content } from "../content";
-import styles from "../components/Shared.module.css";
+import styles from "./resume.module.css";
 
-const Resume: NextPage = () => (
+const Resume: React.FC = () => (
   <>
-    <header className={styles.nav}>
-      <div>
-        <h1 className={styles.gradient}>{content.fullName}</h1>
-        <h2 className={styles.gradient}>{content.title}</h2>
-      </div>
+    <header className={styles.header}>
+      <section>
+        <div>
+          <h1>{content.fullName}</h1>
+          <h2>{content.pronouns}</h2>
+        </div>
+        <div>
+          <span>
+            <GoLocation />
+            {content.location}
+          </span>
+          <span>
+            <GoClock />
+            {content.timezone}
+          </span>
+        </div>
+      </section>
       <address>
-        {content.contacts.map(({ label, to }) => (
-          <Link key={to} to={to}>
-            {Icons[label]} {to.replace(`https://www.`, ``)}
+        {content.contacts.map(([Icon, url]) => (
+          <Link key={url} to={`https://${url}`}>
+            <Icon />
+            {url}
           </Link>
         ))}
       </address>
     </header>
+
     <main className={styles.content}>
-      <aside>
-        <section className={styles.skills}>
-          <h3>Expertise:</h3>
-          <ul>
-            {content.skills.map(([Icon, skill]) => (
-              <li className={styles.skill} key={skill}>
-                <Icon />
-                <span>{skill}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section className={styles.projects}>
-          <h3>Projects:</h3>
-          <ul>
-            {content.projects.map(
-              ({ name, description, website, repository, technologies }) => (
-                <li key={name}>
-                  <h4>{name}</h4>
-                  <p>{description}</p>
-                  <aside>{technologies.join(`, `)}</aside>
-                  {website && (
-                    <Link to={website}>{website.replace(`https://`, ``)}</Link>
-                  )}
-                  {repository && (
-                    <Link to={repository}>
-                      {repository.replace(`https://`, ``)}
-                    </Link>
-                  )}
-                </li>
-              )
-            )}
-          </ul>
-        </section>
-        <section className={styles.education}>
-          <h3>Education:</h3>
-          <ul>
-            {content.schools.map(
-              ({ name, description, graduated, location }) => (
-                <li key={name}>
-                  <h4>{name}</h4>
-                  <p>{description}</p>
+      <section>
+        <p>{content.summary}</p>
+      </section>
+
+      <section className={styles.skills}>
+        <h3>Skills</h3>
+        <ul>
+          {content.skills.map(([Icon, skill]) => (
+            <li key={skill}>
+              <Icon />
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.jobs}>
+        <h3>Experience</h3>
+        <ul>
+          {content.jobs.map(({ role, company, timeframe, highlights }) => (
+            <li key={company}>
+              <article>
+                <header>
+                  <h4>{role}</h4>
                   <aside>
-                    <span>{location}</span>
-                    <span>{graduated}</span>
+                    <span>
+                      <GoOrganization />
+                      {company}
+                    </span>
+                    <span>
+                      <GoCalendar />
+                      {timeframe}
+                    </span>
                   </aside>
-                </li>
-              )
-            )}
-          </ul>
-        </section>
-      </aside>
-      <article>
-        <section className={styles.summary}>
-          <h3>Summary:</h3>
-          <p>{content.summary}</p>
-        </section>
-        <section className={styles.jobs}>
-          <h3>Experience:</h3>
-          <ul>
-            {content.jobs
-              .filter(({ showcase }) => showcase)
-              .map(
-                ({
-                  role,
-                  company,
-                  type,
-                  timeframe,
-                  technologies,
-                  highlights
-                }) => (
-                  <li key={company}>
-                    <div>
-                      <div>
-                        <h4>{role}</h4>
-                        {company && <span>{company}</span>}
-                      </div>
-                      <div>
-                        <span>{type}</span>
-                        <span
-                          style={{
-                            "--content": `"${timeframe.replace(/\//g, `.`)}"`
-                          }}
-                        >
-                          {timeframe}
-                        </span>
-                      </div>
-                    </div>
-                    <aside>
-                      <span>{technologies?.join(`, `)}</span>
-                    </aside>
-                    {Array.isArray(highlights) && highlights.length > 0 ? (
-                      <ul>
-                        {highlights.map((highlight) => (
-                          <li key={highlight}>{highlight}</li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </li>
-                )
-              )}
-          </ul>
-          <aside>Additional Experience</aside>
-          <ul>
-            {content.jobs
-              .filter(({ showcase }) => !showcase)
-              .map(({ role, company, timeframe }) => (
-                <li key={company}>
-                  <div>
-                    <h4>{role}</h4>
-                    {company}
-                  </div>
-                  {timeframe}
-                </li>
-              ))}
-          </ul>
-        </section>
-      </article>
+                </header>
+                {Array.isArray(highlights) && highlights.length > 0 ? (
+                  <ul>
+                    {highlights.map((highlight) => (
+                      <li key={highlight}>
+                        <p>{highlight}</p>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </article>
+            </li>
+          ))}
+        </ul>
+        <footer>
+          <Link to="https://www.linkedin.com/in/saeris">
+            Full work history available on LinkedIn
+          </Link>
+        </footer>
+      </section>
+
+      <section className={styles.projects}>
+        <h3>Projects</h3>
+        <ul>
+          {content.projects.map(({ name, description, Icon, link }) => (
+            <li key={name}>
+              <article>
+                <header>
+                  <h4>{name}</h4>
+                  <Link to={`https://${link}`}>
+                    <Icon />
+                    {link}
+                  </Link>
+                </header>
+                <p>{description}</p>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.education}>
+        <h3>Education</h3>
+        <ul>
+          {content.schools.map(({ name, degree }) => (
+            <li key={name}>
+              <article>
+                <h4>{name}</h4>
+                <span>
+                  <GoMortarBoard />
+                  {degree}
+                </span>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
-    <footer className={styles.footer}>
-      <Link title="Saeris.io - Home" to="/">
-        <Logo />
-      </Link>
-    </footer>
   </>
 );
 

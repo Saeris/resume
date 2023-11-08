@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Mona Sans";
+  src:
+    url("../../public/fonts/Mona-Sans.woff2")
+      format("woff2 supports variations"),
+    url("../../public/fonts/Mona-Sans.woff2") format("woff2-variations");
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mona Sans Fallback";
+  size-adjust: 108.5%;
+  ascent-override: 82%;
+  src: local(Arial);
+}

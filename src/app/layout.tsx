@@ -1,40 +1,22 @@
 import React from "react";
-import {
-  Titillium_Web as titillium,
-  Orbitron as orbitron
-} from "next/font/google";
 import type { Metadata } from "next/types";
+import { Providers } from "./providers";
+import "../theme/fonts.css";
 import "../theme/reset.css";
 import "../theme/theme.css";
 
 /* eslint-disable @typescript-eslint/quotes */
-const body = titillium({
-  weight: ["200", "300", "600"],
-  variable: "--font-titillium",
-  subsets: ["latin"]
-});
-
-const display = orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"]
-});
-
-const title = "Drake Costa - Resume";
-const description =
-  "Full-Stack TypeScript Engineer specializing in Design Systems and Developer Experience.";
-
 export const metadata: Metadata = {
-  title,
-  description,
+  title: "Drake Costa - Full-Stack TypeScript Engineer",
+  description: "Resume",
   creator: "Drake Costa",
   authors: [{ name: "Drake Costa", url: "https://saeris.gg" }],
   manifest: "/manifest.json",
-  themeColor: "#127cbb",
   openGraph: {
-    title,
-    description,
+    title: "Drake Costa - Full-Stack TypeScript Engineer",
+    description: "Resume",
     url: "https://resume.saeris.gg",
-    siteName: title,
+    siteName: "Worbik",
     images: [
       {
         url: "/share-card.webp",
@@ -47,28 +29,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: "Drake Costa - Full-Stack TypeScript Engineer",
+    description: "Resume",
     creator: "@saeris",
     images: ["/share-card.webp"]
   },
   icons: {
-    shortcut: "/favicon.ico",
-    apple: [
-      { url: "/logo192.png", sizes: "192x192", type: "image/png" },
-      { url: "/logo512.png", sizes: "512x512", type: "image/png" }
-    ]
-  },
-  appleWebApp: {
-    title,
-    statusBarStyle: "black-translucent"
+    shortcut: "/favicon.ico"
   }
 };
 /* eslint-enable @typescript-eslint/quotes */
 
-const Root = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en" className={[body.variable, display.variable].join(` `)}>
-    <body>{children}</body>
+const Root: React.FC<{ readonly children: React.ReactNode }> = ({
+  children
+}) => (
+  <html lang="en">
+    <body>
+      <Providers>{children}</Providers>
+    </body>
   </html>
 );
 

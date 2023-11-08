@@ -3,8 +3,8 @@
   "ts-node": {
     "transpileOnly": true
   },
-  "include": [".next/types/**/*.ts", "./src/**/*"],
-  "exclude": ["node_modules", "**/__mocks__/**/*", "**/__test__/**/*", "**/*.spec.ts"],
+  "include": [".next/types/**/*.ts", "./src/**/*.*", "./src/**/*.d.ts"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "noEmit": true,
     "isolatedModules": true,
@@ -15,6 +15,7 @@
     /* Basic Options */
     "target": "ESNext",
     "module": "ESNext",
+    "allowImportingTsExtensions": true,
     "lib": [
       "ESNext", // adds support for ESNext functionality
       "DOM" // adds support for 'window' other dom methods
@@ -31,7 +32,7 @@
     "noFallthroughCasesInSwitch": true,
     // "strictFunctionTypes": true,
     /* Module Resolution Options */
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     /* Advanced Options */
@@ -42,6 +43,9 @@
     "plugins": [
       {
         "name": "next"
+      },
+      {
+        "name": "typescript-plugin-css-modules"
       }
     ]
   }

@@ -3,8 +3,8 @@
 import React from "react";
 
 export interface LinkProps extends Omit<React.HTMLAttributes<HTMLAnchorElement>, "href"> {
-  to?: string;
-  children?: React.ReactNode;
+  readonly to?: string;
+  readonly children?: React.ReactNode;
 }
 
 const email =

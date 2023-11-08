@@ -1,119 +1,85 @@
-import type React from "react";
 import type { IconType } from "react-icons";
+import { GoLink, GoMail, GoRepo } from "react-icons/go";
 import {
+  SiLinkedin,
+  SiGithub,
   SiApollographql,
-  SiBabel,
-  SiCodesandbox,
-  SiCss3,
-  SiEslint,
   SiFigma,
-  SiFramer,
-  SiGithubactions,
   SiGraphql,
-  SiHtml5,
-  SiJavascript,
+  SiTrpc,
   SiJest,
   SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
-  SiPrisma,
   SiReact,
-  SiReactquery,
   SiRedux,
   SiRollupdotjs,
   SiStorybook,
   SiStyledcomponents,
-  SiThreedotjs,
   SiTypescript,
   SiWebpack
 } from "react-icons/si";
-import { AriakitIcon } from "./components/AriakitIcon";
 
 export interface Content {
   fullName: string;
-  title: string;
-  contacts: { label: string; to: string }[];
+  pronouns: string;
+  location: string;
+  timezone: string;
+  contacts: Array<[Icon: IconType, url: string]>;
   summary: string;
-  skills: [IconType | React.FC, string][];
-  jobs: {
-    showcase?: boolean;
+  skills: Array<[Icon: IconType, skill: string]>;
+  jobs: Array<{
     role: string;
-    type: "Full-Time" | "Contract" | "Freelance" | "Volunteer";
     company: string | null;
     timeframe: string;
-    technologies?: string[];
-    highlights?: string[];
-  }[];
+    highlights: string[];
+  }>;
 
-  projects: {
+  projects: Array<{
     name: string;
+    Icon: IconType;
+    link: string;
     description: string;
-    website: string | null;
-    repository: string | null;
-    technologies: string[];
-  }[];
-  schools: {
+  }>;
+  schools: Array<{
     name: string;
-    description: string;
-    graduated: string | null;
-    location: string;
-  }[];
+    degree: string;
+  }>;
 }
 
 export const content: Content = {
   fullName: `Drake Costa`,
-  title: `Full-Stack TypeScript Engineer`,
+  pronouns: `he/him`,
+  location: `Portland, Oregon`,
+  timezone: `Pacific Time (UTC -08:00)`,
   contacts: [
-    { label: `Email`, to: `drake@saeris.io` },
-    { label: `GitHub`, to: `https://www.github.com/saeris` },
-    { label: `Twitter`, to: `https://www.twitter.com/saeris` },
-    { label: `LinkedIn`, to: `https://www.linkedin.com/in/saeris` }
+    [GoMail, `drake@saeris.io`],
+    [SiGithub, `github.com/saeris`],
+    [SiLinkedin, `linkedin.com/in/saeris`]
   ],
-  summary: `Self-taught software engineer with over a decade of experience. Educational background in graphic design and a prior career in game development. Enthusiastic about design systems, accessibility, and developer experience. Highly values learning and bringing people together.`,
+  summary: `Full-Stack TypeScript engineer with 10+ years of experience building user-facing applications using technologies such as React, Next.js, Node.js and GraphQL. My key areas of focus are Developer Experience, Design Systems and Accessibility. I strive to architect elegant and scalable solutions based on the latest technologies and practices.`,
   skills: [
     [SiTypescript, `TypeScript`],
-    [SiJavascript, `JavaScript`],
-    [SiHtml5, `HTML`],
-    [SiCss3, `CSS`],
-    [SiNodedotjs, `Node.js`],
-    [SiGraphql, `GraphQL`],
-    [SiPrisma, `Prisma`],
-    [SiPostgresql, `PostgreSQL`],
+    [SiNextdotjs, `Next.js`],
     [SiReact, `React`],
     [SiRedux, `Redux`],
-    [SiNextdotjs, `Next.js`],
-    [AriakitIcon, `Ariakit`],
     [SiApollographql, `Apollo`],
-    [SiReactquery, `React-Query`],
+    [SiGraphql, `GraphQL`],
+    [SiPostgresql, `PostgreSQL`],
+    [SiTrpc, `tRPC`],
+    [SiNodedotjs, `Node.js`],
     [SiStyledcomponents, `Styled-Components`],
-    [SiFramer, `Framer Motion`],
-    [SiThreedotjs, `Three.js`],
-    [SiCodesandbox, `CodeSandbox`],
-    [SiWebpack, `Webpack`],
-    [SiBabel, `Babel`],
-    [SiEslint, `ESLint`],
-    [SiRollupdotjs, `Rollup`],
     [SiJest, `Jest`],
-    [SiGithubactions, `GitHub Actions`],
+    [SiWebpack, `Webpack`],
+    [SiRollupdotjs, `Rollup`],
     [SiStorybook, `Storybook`],
     [SiFigma, `Figma`]
   ],
   jobs: [
     {
-      showcase: true,
       role: `Senior Software Engineer I`,
-      type: `Full-Time`,
       company: `M1 Finance`,
-      timeframe: `8.22 - 5.23`,
-      technologies: [
-        `React`,
-        `TypeScript`,
-        `GraphQL`,
-        `Ariakit`,
-        `Styled-Components`,
-        `Storybook`,
-        `Figma`
-      ],
+      timeframe: `Aug 2022 - May 2023`,
       highlights: [
         `Shipped a multi-phase design system foundations project in under four months for our Web, iOS and Android platforms as part of a cross-functional team of designers and engineers.`,
 
@@ -129,22 +95,9 @@ export const content: Content = {
       ]
     },
     {
-      showcase: true,
       role: `Software Engineer II`,
-      type: `Contract`,
-      company: `VanderHouwen on assignment at Nike`,
-      timeframe: `10.20 - 7.21`,
-      technologies: [
-        `Node.js`,
-        `React`,
-        `Next.js`,
-        `TypeScript`,
-        `Babel`,
-        `Rollup`,
-        `ESLint`,
-        `Jest`,
-        `Open CLI Framework`
-      ],
+      company: `Nike`,
+      timeframe: `Oct 2020 - Jul 2021`,
       highlights: [
         `Responsible for the development of a Next.js based micro-frontend application platform as a member of a platform team, which enabled dozens of product teams to build and ship features independently.`,
         `Migrated several internal libraries to TypeScript, including a design system consisting of over 200 components, and mentored teammates in the usage of TypeScript.`,
@@ -153,110 +106,44 @@ export const content: Content = {
       ]
     },
     {
-      showcase: true,
-      role: `Front-End Engineer`,
-      type: `Contract`,
+      role: `Full Stack Engineer`,
       company: `CodeSandbox`,
-      timeframe: `05.19 - 03.20`,
-      technologies: [
-        `React`,
-        `TypeScript`,
-        `Styled-Components`,
-        `Ariakit`,
-        `Apollo`,
-        `GraphQL`
-      ],
+      timeframe: `May 2019 - Mar 2020`,
       highlights: [
         `Developed user interface for Template Sandboxes, a core product feature which enables users to easily build and share their own customizable and reusable starter projects.`,
         `Established internal dogfooding process for using the product to prototype and build new features, such as a crash handler page which streamlined user's ability to file bug reports.`,
         `Documented coding style guidelines and refactored legacy components to adhere to industry standard best practices.`
       ]
-    },
-    {
-      showcase: false,
-      role: `Web Team Lead`,
-      type: `Volunteer`,
-      company: `FanimeCon`,
-      timeframe: `05.21 - 10.22`
-    },
-    {
-      showcase: false,
-      role: `Senior Engineer`,
-      type: `Full-Time`,
-      company: `One Finance`,
-      timeframe: `08.21 - 10.21`
-    },
-    {
-      showcase: false,
-      role: `Full-Stack Engineer`,
-      type: `Freelance`,
-      company: `Self-Employed`,
-      timeframe: `01.17 - 5.19`
-    },
-    {
-      showcase: false,
-      role: `Web Application Developer`,
-      type: `Full-Time`,
-      company: `4-Tell`,
-      timeframe: `10.16 - 12.16`
-    },
-    {
-      showcase: false,
-      role: `Developer III`,
-      type: `Full-Time`,
-      company: `Catalyst DevWorks`,
-      timeframe: `8.16 - 2.17`
-    },
-    {
-      showcase: false,
-      role: `Front-End Developer`,
-      type: `Contract`,
-      company: `Sellpoints`,
-      timeframe: `12.14 - 5.15`
     }
   ],
   projects: [
     {
-      name: `Worbik`,
-      description: `Daily Word Puzzle Mini-Game`,
-      website: `https://worbik.saeris.io`,
-      repository: null,
-      technologies: [`Nextjs`, `Typescript`, `Vercel Platform`]
-    },
-    {
-      name: `saeris.gg`,
-      description: `Personal Link Sharing Microsite`,
-      website: `https://saeris.gg`,
-      repository: `https://github.com/saeris/saeris.gg`,
-      technologies: [`Next.js`, `TypeScript`, `Three.js`, `CSS Modules`]
-    },
-    {
       name: `Discordkit`,
-      description: `A Type-Safe REST API Client for Discord`,
-      website: null,
-      repository: `https://github.com/Saeris/discordkit`,
-      technologies: [`TypeScript`, `Zod`]
+      Icon: GoRepo,
+      link: `github.com/discordkit/discordkit`,
+      description: `TypeScript SDK for Discord's public REST API. Features a functional architecture optimized for tiny bundle sizes and schema definitions providing out-of-the-box validation. Built as a monorepo with automated publishing and includes 500+ integration tests.`
     },
     {
-      name: `Proxy Tokens`,
-      description: `Design Token Utility to Generate CSS Variables`,
-      website: null,
-      repository: `https://github.com/Saeris/proxy-tokens`,
-      technologies: [`Styled-Components`, `TypeScript`]
+      name: `Valimock`,
+      Icon: GoRepo,
+      link: `github.com/saeris/valimock`,
+      description: `Schema-based data mocking library for Valibot using Faker.js. I built this library alongside a PR that added a reflection API to Valibot which enabled third-party authors to create their own tools and integrations.`
+    },
+    {
+      name: `Worbik`,
+      Icon: GoLink,
+      link: `worbik.saeris.gg`,
+      description: `Daily word puzzle mini-game built with the latest features of Next.js and Vercel, such as Edge Functions, Edge Config, Cron Jobs, and the Next.js 13 App router.`
     }
   ],
   schools: [
     {
       name: `Renton Technical College`,
-      description: `BAS - Computer Network Engineering`,
-      graduated: `April 2023 - Present`,
-      location: `Renton, WA`
+      degree: `Bachelors - Computer Network Engineering`
     },
     {
-      name: `Las Positas Community College`,
-      description: `AA - Visual Communications`,
-      graduated: `Graduated May 2010`,
-      location: `Livermore, CA`
+      name: `Las Positas College`,
+      degree: `Associates - Visual Communications`
     }
   ]
 };
