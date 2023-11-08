@@ -5,18 +5,18 @@
   width: 100%;
 
   /* Name, Location, Timezone */
-  > section {
+  section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-2);
 
-    > div {
+    div {
       display: flex;
       align-items: baseline;
       gap: var(--spacing-2);
 
-      > h1 {
+      h1 {
         display: inline;
         color: var(--primary);
         font-size: 40px;
@@ -24,7 +24,7 @@
         letter-spacing: 0.6px;
       }
 
-      > h2 {
+      h2 {
         display: inline;
         color: var(--tertiary);
         font-family: Mona Sans;
@@ -168,7 +168,7 @@
     font-weight: 400;
 
     svg {
-      align-self: normal;
+      align-self: center;
       width: var(--spacing-4);
       height: var(--spacing-4);
       color: var(--icon);
@@ -214,7 +214,7 @@
           font-weight: 400;
 
           svg {
-            align-self: center;
+            align-self: normal;
             width: var(--spacing-4);
             height: var(--spacing-4);
             color: var(--icon);
@@ -237,7 +237,7 @@
   }
 
   footer {
-    width: stretch;
+    width: 100%;
     color: var(--tertiary);
     font-size: 14px;
     font-weight: 300;
@@ -289,7 +289,7 @@
         font-weight: 400;
 
         svg {
-          align-self: center;
+          align-self: normal;
           width: var(--spacing-4);
           height: var(--spacing-4);
           color: var(--icon);
