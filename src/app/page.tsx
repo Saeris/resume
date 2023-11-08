@@ -88,7 +88,11 @@ const Resume: React.FC = () => (
             </li>
           ))}
         </ul>
-        <footer>Full work history available on LinkedIn</footer>
+        <footer>
+          <Link to="https://www.linkedin.com/in/saeris">
+            Full work history available on LinkedIn
+          </Link>
+        </footer>
       </section>
 
       <section className={styles.projects}>
