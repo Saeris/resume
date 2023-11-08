@@ -15,7 +15,7 @@ body {
   margin: 0;
   border: 0;
   font-family: var(--mona-sans);
-  font-feature-settings: "salt" on;
+  font-feature-settings: "ss01" on;
   color: var(--primary);
   background: var(--bg);
 
@@ -64,7 +64,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-feature-settings: "salt" off;
+  font-feature-settings: "ss01" off;
 }
 h1,
 h2,
