@@ -7,7 +7,6 @@ html {
   height: 100%;
   margin: 0;
   border: 0;
-  font-size: 62.5%;
   overflow-x: hidden;
 }
 body {
@@ -15,24 +14,57 @@ body {
   padding: 0;
   margin: 0;
   border: 0;
-  font-family: var(--fonts-body);
-  color: var(--colors-text);
+  font-family: var(--mona-sans);
+  font-feature-settings: "salt" on;
+  color: var(--primary);
+  background: var(--bg);
 
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: fit-content;
-  max-width: 8.5in;
-  height: 100%;
-  min-height: 100vh;
-  padding: 24px 32px;
+  max-width: 964px;
+  padding: var(--spacing-12) var(--spacing-16);
   margin: 0 auto;
 
-  @media print {
-    padding: 0.25in 0.5in;
-    max-width: 8.5in;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-property: color, background-color, border-color;
+
+  @media only screen and (max-width: 700px) and (orientation: portrait) {
+    padding: var(--spacing-8) var(--spacing-5);
+    max-width: 100%;
   }
+}
+
+@media print {
+  body {
+    padding: unset;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  @page {
+    size: letter portrait;
+  }
+
+  @page:left {
+    margin: 0.5in;
+  }
+
+  @page:right {
+    margin: 0.5in;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-feature-settings: "salt" off;
 }
 h1,
 h2,
@@ -50,12 +82,14 @@ ul {
 }
 a {
   text-decoration: none;
-  transition: border 0.3s ease-in-out, color 0.3s ease-in-out;
-  color: var(--colors-primary);
+  transition:
+    border 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+  color: var(--tertiary);
 
   &:hover,
   &:focus {
-    color: var(--colors-secondary);
+    color: var(--icon);
     text-decoration: none;
   }
 }
