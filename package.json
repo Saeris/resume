@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/saeris/resume.git"
   },
-  "packageManager": "yarn@4.0.1",
+  "packageManager": "yarn@4.0.2",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -28,7 +28,7 @@
     "react-icons": "^4.11.0"
   },
   "devDependencies": {
-    "@csstools/postcss-oklab-function": "^3.0.7",
+    "@csstools/postcss-oklab-function": "^3.0.9",
     "@saeris/eslint-config": "^2.5.0",
     "@types/node": "20.8.10",
     "@types/react": "^18.2.35",
