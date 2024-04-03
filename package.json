@@ -1,14 +1,14 @@
 {
   "name": "@saeris/resume",
   "description": "Personal Resume",
-  "version": "2023.11.07",
+  "version": "2024.04.02",
   "author": "Drake Costa <drake@saeris.io> (https://saeris.gg/)",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/saeris/resume.git"
   },
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.1",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -19,31 +19,30 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@evilmartians/harmony": "^1.1.0",
-    "next": "^14.0.1",
+    "@evilmartians/harmony": "^1.2.0",
+    "next": "^14.1.3",
     "next-pwa": "^5.6.0",
-    "next-themes": "^0.2.1",
+    "next-themes": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0"
+    "react-icons": "^5.0.1"
   },
   "devDependencies": {
-    "@csstools/postcss-oklab-function": "^3.0.9",
-    "@saeris/eslint-config": "^2.5.0",
-    "@types/node": "20.8.10",
-    "@types/react": "^18.2.35",
-    "@types/react-dom": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^6.9.1",
-    "@typescript-eslint/parser": "^6.9.1",
-    "eslint": "^8.53.0",
-    "eslint-plugin-import": "^2.29.0",
-    "postcss": "^8.4.28",
-    "postcss-load-config": "^4.0.1",
+    "@saeris/eslint-config": "^2.6.0",
+    "@types/node": "20.11.28",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "postcss": "^8.4.35",
+    "postcss-load-config": "^5.0.3",
     "postcss-nested": "^6.0.1",
-    "postcss-preset-env": "^9.1.1",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2",
-    "typescript-plugin-css-modules": "^5.0.1"
+    "postcss-preset-env": "^9.5.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2",
+    "typescript-plugin-css-modules": "^5.1.0"
   },
   "eslintConfig": {
     "extends": [
@@ -82,5 +81,26 @@
     "trailingComma": "none",
     "bracketSpacing": true,
     "jsxBracketSameLine": false
+  },
+  "postcss": {
+    "plugins": [
+      "postcss-nested",
+      [
+        "postcss-preset-env",
+        {
+          "autoprefixer": {
+            "flexbox": "no-2009"
+          },
+          "features": {
+            "oklab-function": {
+              "preserve": true
+            },
+            "relative-color-syntax": {
+              "preserve": true
+            }
+          }
+        }
+      ]
+    ]
   }
 }

@@ -298,6 +298,15 @@
     }
   }
 
+  footer {
+    width: 100%;
+    color: var(--tertiary);
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   @media only screen and (max-width: 700px) and (orientation: portrait) {
     ul {
       gap: var(--spacing-2);
