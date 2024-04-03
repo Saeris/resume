@@ -77,6 +77,15 @@ export const content: Content = {
   ],
   jobs: [
     {
+      role: `Design Engineering Consultant`,
+      company: `Self-Employed`,
+      timeframe: `July 2023 - Present`,
+      highlights: [
+        `Provided individualized training to designers and engineers in the use of Figma, implementation of design systems, and strategies for streamlining handoff processes.`,
+        `Created UI mockups, code examples, supporting documentation and infographics tailored to illustrate concepts such as the relationships between designs built in Figma and their implementation in React/HTML/CSS.`
+      ]
+    },
+    {
       role: `Senior Software Engineer I`,
       company: `M1 Finance`,
       timeframe: `Aug 2022 - May 2023`,

@@ -8,9 +8,7 @@ export const Providers: React.FC<{ readonly children: React.ReactNode }> = ({
 }) => {
   ReactDOM.preload(`fonts/Mona-Sans.woff2`, {
     as: `font`,
-    // @ts-expect-error
-    type: `font/woff2`,
-    crossorigin: ``
+    type: `font/woff2`
   });
 
   return <ThemeProvider attribute="class">{children}</ThemeProvider>;

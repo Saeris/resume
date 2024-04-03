@@ -113,6 +113,11 @@ const Resume: React.FC = () => (
             </li>
           ))}
         </ul>
+        <footer>
+          <Link to="https://www.github.com/saeris">
+            Additional projects available on GitHub
+          </Link>
+        </footer>
       </section>
 
       <section className={styles.education}>
